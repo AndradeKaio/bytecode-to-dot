@@ -16,7 +16,7 @@ namespace {
     static char ID;
     BytecodeDot(): FunctionPass(ID){}
 
-    std::string get_block_reference(BasicBlock *BB){
+    std::string get_bb_name(BasicBlock *BB){
       std::string block_address;
       raw_string_ostream string_stream(block_address);
       BB->printAsOperand(string_stream, false);
@@ -25,32 +25,34 @@ namespace {
 
     bool runOnFunction(Function &F) override {
       std::string funcName = F.getName().str();
-      std::ofstream file(funcName + ".dot");
-      file << "digraph \"CFG of " + funcName +  " function\"{\n";
 
       errs() << "Function name: ";
       errs().write_escaped(funcName) << '\n';
 
+      std::ofstream file(funcName + ".dot");
+      file << "digraph \"CFG of " + funcName +  " function\"{\n";
+
       for(BasicBlock &BB: F) {
         errs() << "BasicBlock: ";
-        auto bb_name = get_block_reference(&BB);
+        auto bb_name = get_bb_name(&BB);
         file << "\tBB" + bb_name + "[shape=record,label=\"{BB" + bb_name + ":\\l\\l\n";
+
+        // prints all the instructions
         std::string str;
         raw_string_ostream so(str);
         for (Instruction &I : BB) {
           so << I;
           file << "\t " + so.str() << "\\l";
           str.clear();
-          // if(I.isterminator()) {
-          //   
-          // }
         }
         file << "\t}\"];\n";
+
+        // get the successors of the bb
         Instruction *terminator = BB.getTerminator();
         if(terminator){
           for(unsigned int i=0; i<terminator->getNumSuccessors(); i++){
             BasicBlock *succ = terminator->getSuccessor(i);     
-            auto succ_name = get_block_reference(succ);
+            auto succ_name = get_bb_name(succ);
             file << "\tBB"+ bb_name + " -> BB" + succ_name + "\n";
           }
         }
