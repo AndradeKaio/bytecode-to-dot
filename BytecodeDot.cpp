@@ -34,12 +34,12 @@ namespace {
       for(BasicBlock &BB: F) {
         errs() << "BasicBlock: ";
         auto bb_name = get_block_reference(&BB);
-        file << "\tBB" + bb_name + " [shape=record,label=\"{BB" + bb_name + "\n";
+        file << "\tBB" + bb_name + "[shape=record,label=\"{BB" + bb_name + ":\\l\\l\n";
         std::string str;
         raw_string_ostream so(str);
         for (Instruction &I : BB) {
           so << I;
-          file << "\t " + so.str() << "\\n";
+          file << "\t " + so.str() << "\\l";
           str.clear();
           // if(I.isterminator()) {
           //   
@@ -51,7 +51,7 @@ namespace {
           for(unsigned int i=0; i<terminator->getNumSuccessors(); i++){
             BasicBlock *succ = terminator->getSuccessor(i);     
             auto succ_name = get_block_reference(succ);
-            file << "\tBB"+ bb_name + "-> BB" + succ_name + "\n";
+            file << "\tBB"+ bb_name + " -> BB" + succ_name + "\n";
           }
         }
       }
