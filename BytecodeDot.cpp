@@ -4,6 +4,7 @@
 #include "llvm/IR/BasicBlock.h"
 #include "llvm/IR/LegacyPassManager.h"
 #include "llvm/IR/Instructions.h"
+#include "llvm/Support/Casting.h"
 #include "llvm/Support/raw_ostream.h"
 
 using namespace llvm;
@@ -28,20 +29,40 @@ namespace {
     std::string getOperands(Instruction* I) {
       std::string operands;
       switch(I->getOpcode()){
-        case Instruction::PHI:
-          errs() << "phjo\n";
+        case Instruction::PHI:{
+          errs() << "PHI ";
           PHINode *phi = dyn_cast<PHINode>(I);
           for(unsigned int i=0; i<phi->getNumIncomingValues(); i++){
-            operands += "[" + phi->getIncomingValue(i)->getNameOrAsOperand() + ", " + phi->getIncomingBlock(i)->getNameOrAsOperand() + "]";
+            operands += "[" + phi->getIncomingValue(i)->getNameOrAsOperand()
+              + ", BB" + phi->getIncomingBlock(i)->getNameOrAsOperand().substr(1) + "]";
             if(i != phi->getNumIncomingValues()-1){
               operands+=",";
             }else{
               operands+="\n";
             }
           }
-          errs() << operands;
+          break;
+        }
+        case Instruction::Br:{
+          errs() << "BRANCH ";
+          unsigned int numberOfOperands = I->getNumOperands();
+          if(numberOfOperands == 1){
+            operands = "BB" + I->getOperand(0)->getNameOrAsOperand().substr(1);
+          }else{
+            operands = I->getOperand(0)->getNameOrAsOperand();
+            for(unsigned int i=1; i<numberOfOperands; i++){
+              operands += ", BB" + I->getOperand(i)->getNameOrAsOperand().substr(1);
+            }
+          }
+          break;
+        }
+        case Instruction::Ret:{
+          errs() << "RET ";
+          if(I->getNumOperands() > 0) { operands += I->getOperand(0)->getNameOrAsOperand();}
+          break;
+        }
       }
-      return "";
+      return operands;
     }
 
     std::string getBBName(BasicBlock *BB){
@@ -81,7 +102,7 @@ namespace {
           for(unsigned int i=0; i<I.getNumOperands(); i++){
             instStr += I.getOperand(i)->getNameOrAsOperand();
           }
-          getOperands(&I);
+          errs() << getOperands(&I) << "\n";
           errs() << instStr << "\n";
           so << I;
           file << "\t " + so.str() << "\\l";
