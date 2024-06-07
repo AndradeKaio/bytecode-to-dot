@@ -14,9 +14,37 @@ namespace {
   struct BytecodeDot: public FunctionPass {
 
     static char ID;
+    unsigned int labelCount = 0;
+
     BytecodeDot(): FunctionPass(ID){}
 
-    std::string get_bb_name(BasicBlock *BB){
+    std::string getValueName(Value *value){
+      if(!value->hasName()){
+        value->setName(std::to_string(labelCount++));
+      }
+      return value->getName().str();
+    }
+
+    std::string getOperands(Instruction* I) {
+      std::string operands;
+      switch(I->getOpcode()){
+        case Instruction::PHI:
+          errs() << "phjo\n";
+          PHINode *phi = dyn_cast<PHINode>(I);
+          for(unsigned int i=0; i<phi->getNumIncomingValues(); i++){
+            operands += "[" + phi->getIncomingValue(i)->getNameOrAsOperand() + ", " + phi->getIncomingBlock(i)->getNameOrAsOperand() + "]";
+            if(i != phi->getNumIncomingValues()-1){
+              operands+=",";
+            }else{
+              operands+="\n";
+            }
+          }
+          errs() << operands;
+      }
+      return "";
+    }
+
+    std::string getBBName(BasicBlock *BB){
       std::string block_address;
       raw_string_ostream string_stream(block_address);
       BB->printAsOperand(string_stream, false);
@@ -33,14 +61,28 @@ namespace {
       file << "digraph \"CFG of " + funcName +  " function\"{\n";
 
       for(BasicBlock &BB: F) {
-        errs() << "BasicBlock: ";
-        auto bb_name = get_bb_name(&BB);
+        auto bb_name = getBBName(&BB);
         file << "\tBB" + bb_name + "[shape=record,label=\"{BB" + bb_name + ":\\l\\l\n";
 
         // prints all the instructions
         std::string str;
         raw_string_ostream so(str);
         for (Instruction &I : BB) {
+          std::string instStr;
+          // ignoring branch instructions
+          if(!I.getType()->isVoidTy()){
+            instStr = I.getNameOrAsOperand() + " = ";
+          }
+
+          // set the opcode
+          instStr += I.getOpcodeName();
+
+          // get the operands
+          for(unsigned int i=0; i<I.getNumOperands(); i++){
+            instStr += I.getOperand(i)->getNameOrAsOperand();
+          }
+          getOperands(&I);
+          errs() << instStr << "\n";
           so << I;
           file << "\t " + so.str() << "\\l";
           str.clear();
@@ -52,7 +94,7 @@ namespace {
         if(terminator){
           for(unsigned int i=0; i<terminator->getNumSuccessors(); i++){
             BasicBlock *succ = terminator->getSuccessor(i);     
-            auto succ_name = get_bb_name(succ);
+            auto succ_name = getBBName(succ);
             file << "\tBB"+ bb_name + " -> BB" + succ_name + "\n";
           }
         }
