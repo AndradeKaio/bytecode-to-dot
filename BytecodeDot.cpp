@@ -27,7 +27,7 @@ namespace {
     }
 
     std::string getOperands(Instruction* I) {
-      std::string operands;
+      std::string operands = " ";
       switch(I->getOpcode()){
         case Instruction::PHI:{
           errs() << "PHI ";
@@ -36,7 +36,7 @@ namespace {
             operands += "[" + phi->getIncomingValue(i)->getNameOrAsOperand()
               + ", BB" + phi->getIncomingBlock(i)->getNameOrAsOperand().substr(1) + "]";
             if(i != phi->getNumIncomingValues()-1){
-              operands+=",";
+              operands+=", ";
             }else{
               operands+="\n";
             }
@@ -47,9 +47,9 @@ namespace {
           errs() << "BRANCH ";
           unsigned int numberOfOperands = I->getNumOperands();
           if(numberOfOperands == 1){
-            operands = "BB" + I->getOperand(0)->getNameOrAsOperand().substr(1);
+            operands += "BB" + I->getOperand(0)->getNameOrAsOperand().substr(1);
           }else{
-            operands = I->getOperand(0)->getNameOrAsOperand();
+            operands += I->getOperand(0)->getNameOrAsOperand();
             for(unsigned int i=1; i<numberOfOperands; i++){
               operands += ", BB" + I->getOperand(i)->getNameOrAsOperand().substr(1);
             }
@@ -61,6 +61,31 @@ namespace {
           if(I->getNumOperands() > 0) { operands += I->getOperand(0)->getNameOrAsOperand();}
           break;
         }
+        case Instruction::Call: {
+          CallInst *call = dyn_cast<CallInst>(I);
+          errs() << call->getCalledFunction()->getNameOrAsOperand();
+          operands += call->getCalledFunction()->getNameOrAsOperand() + "(";
+          errs() << call->arg_size();
+          for(unsigned int i=0; i<call->arg_size(); i++){
+            operands += call->getArgOperand(i)->getNameOrAsOperand();
+            if(i != call->arg_size() - 1){
+              operands += ", ";
+            }
+          }
+          operands += ")";
+          break;
+        }
+        default: {
+          for(unsigned int i=0; i<I->getNumOperands(); i++){
+            operands += " " + I->getOperand(i)->getNameOrAsOperand();
+            if(i != I->getNumOperands()- 1){
+              operands += ", ";
+            }
+
+          }
+          break;
+        }
+        
       }
       return operands;
     }
@@ -94,18 +119,14 @@ namespace {
           if(!I.getType()->isVoidTy()){
             instStr = I.getNameOrAsOperand() + " = ";
           }
-
           // set the opcode
           instStr += I.getOpcodeName();
 
           // get the operands
-          for(unsigned int i=0; i<I.getNumOperands(); i++){
-            instStr += I.getOperand(i)->getNameOrAsOperand();
-          }
-          errs() << getOperands(&I) << "\n";
+          instStr += getOperands(&I);
           errs() << instStr << "\n";
           so << I;
-          file << "\t " + so.str() << "\\l";
+          file << "\t " + instStr << "\\l";
           str.clear();
         }
         file << "\t}\"];\n";
