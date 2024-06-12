@@ -36,4 +36,6 @@ This project was developed using LLVM version 19.0.0, but should work on earlier
     $ dot -Tpng test.dot -o test.png && open test.png
     ```
     
-
+    
+##### Troubleshooting
+[You can also run this pass using the Legacy Pass Manager!](https://github.com/AndradeKaio/bytecode-to-dot/tree/main/legacy-pm)
