@@ -1,6 +1,7 @@
-add_llvm_library(BytecodeDot MODULE
+add_library(BytecodeDot MODULE
   BytecodeDot.cpp
-
-  PLUGIN_TOOL
-  opt
+  BytecodeDotPlugin.cpp
   )
+
+target_include_directories(BytecodeDot PRIVATE
+    "${CMAKE_CURRENT_SOURCE_DIR}/../include")
