@@ -14,4 +14,8 @@ You can also use this pass with the Legacy Pass Manager!
     $ cd /llvm-project/llvm/lib/Transforms/build/
     $ cmake --build . --parallel 4
     ```
-
+4. Run the pass
+    Go to your build directory and run
+    ```shell
+    opt -load ../lib/BytecodeDot.dylib -bytecodedot --bugpoint-enable-legacy-pm  < test.ll > /dev/null
+    ```
