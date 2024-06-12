@@ -1,0 +1,17 @@
+digraph "CFG of Innerproduct function"{
+	BB5[shape=record,label="{BB5:\l\l
+	 %6 = alloca  1\l	 %7 = alloca  1\l	 %8 = alloca  1\l	 %9 = alloca  1\l	 %10 = alloca  1\l	 %11 = alloca  1\l	 store  %0,  %6\l	 store  %1,  %7\l	 store  %2,  %8\l	 store  %3,  %9\l	 store  %4,  %10\l	 call llvm.lifetime.start.p0(4, %11)\l	 %12 = load  %6\l	 store  0,  %12\l	 store  1,  %11\l	 br BB13\l	}"];
+	BB5 -> BB13
+	BB13[shape=record,label="{BB13:\l\l
+	 %14 = load  %11\l	 %15 = icmp  %14,  40\l	 br %15, BB41, BB16\l	}"];
+	BB13 -> BB16
+	BB13 -> BB41
+	BB16[shape=record,label="{BB16:\l\l
+	 %17 = load  %6\l	 %18 = load  %17\l	 %19 = load  %7\l	 %20 = load  %9\l	 %21 = sext  %20\l	 %22 = getelementptr  %19,  %21\l	 %23 = load  %11\l	 %24 = sext  %23\l	 %25 = getelementptr  %22,  0,  %24\l	 %26 = load  %25\l	 %27 = load  %8\l	 %28 = load  %11\l	 %29 = sext  %28\l	 %30 = getelementptr  %27,  %29\l	 %31 = load  %10\l	 %32 = sext  %31\l	 %33 = getelementptr  %30,  0,  %32\l	 %34 = load  %33\l	 %35 = mul  %26,  %34\l	 %36 = add  %18,  %35\l	 %37 = load  %6\l	 store  %36,  %37\l	 br BB38\l	}"];
+	BB16 -> BB38
+	BB38[shape=record,label="{BB38:\l\l
+	 %39 = load  %11\l	 %40 = add  %39,  1\l	 store  %40,  %11\l	 br BB13\l	}"];
+	BB38 -> BB13
+	BB41[shape=record,label="{BB41:\l\l
+	 call llvm.lifetime.end.p0(4, %11)\l	 ret \l	}"];
+}

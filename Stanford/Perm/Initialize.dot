@@ -1,0 +1,17 @@
+digraph "CFG of Initialize function"{
+	BB0[shape=record,label="{BB0:\l\l
+	 %1 = alloca  1\l	 call llvm.lifetime.start.p0(4, %1)\l	 store  1,  %1\l	 br BB2\l	}"];
+	BB0 -> BB2
+	BB2[shape=record,label="{BB2:\l\l
+	 %3 = load  %1\l	 %4 = icmp  %3,  7\l	 br %4, BB14, BB5\l	}"];
+	BB2 -> BB5
+	BB2 -> BB14
+	BB5[shape=record,label="{BB5:\l\l
+	 %6 = load  %1\l	 %7 = sub  %6,  1\l	 %8 = load  %1\l	 %9 = sext  %8\l	 %10 = getelementptr  permarray,  0,  %9\l	 store  %7,  %10\l	 br BB11\l	}"];
+	BB5 -> BB11
+	BB11[shape=record,label="{BB11:\l\l
+	 %12 = load  %1\l	 %13 = add  %12,  1\l	 store  %13,  %1\l	 br BB2\l	}"];
+	BB11 -> BB2
+	BB14[shape=record,label="{BB14:\l\l
+	 call llvm.lifetime.end.p0(4, %1)\l	 ret \l	}"];
+}

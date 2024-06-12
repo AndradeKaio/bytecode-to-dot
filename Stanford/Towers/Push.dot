@@ -1,0 +1,25 @@
+digraph "CFG of Push function"{
+	BB2[shape=record,label="{BB2:\l\l
+	 %3 = alloca  1\l	 %4 = alloca  1\l	 %5 = alloca  1\l	 %6 = alloca  1\l	 store  %0,  %3\l	 store  %1,  %4\l	 call llvm.lifetime.start.p0(4, %5)\l	 call llvm.lifetime.start.p0(4, %6)\l	 store  0,  %5\l	 %7 = load  %4\l	 %8 = sext  %7\l	 %9 = getelementptr  stack,  0,  %8\l	 %10 = load  %9\l	 %11 = icmp  %10,  0\l	 br %11, BB25, BB12\l	}"];
+	BB2 -> BB12
+	BB2 -> BB25
+	BB12[shape=record,label="{BB12:\l\l
+	 %13 = load  %4\l	 %14 = sext  %13\l	 %15 = getelementptr  stack,  0,  %14\l	 %16 = load  %15\l	 %17 = sext  %16\l	 %18 = getelementptr  cellspace,  0,  %17\l	 %19 = getelementptr  %18,  0,  0\l	 %20 = load  %19\l	 %21 = load  %3\l	 %22 = icmp  %20,  %21\l	 br %22, BB24, BB23\l	}"];
+	BB12 -> BB23
+	BB12 -> BB24
+	BB23[shape=record,label="{BB23:\l\l
+	 store  1,  %5\l	 call Error(.str.2)\l	 br BB24\l	}"];
+	BB23 -> BB24
+	BB24[shape=record,label="{BB24:\l\l
+	 br BB25\l	}"];
+	BB24 -> BB25
+	BB25[shape=record,label="{BB25:\l\l
+	 %26 = load  %5\l	 %27 = icmp  %26,  0\l	 br %27, BB28, BB47\l	}"];
+	BB25 -> BB47
+	BB25 -> BB28
+	BB28[shape=record,label="{BB28:\l\l
+	 %29 = call Getelement()\l	 store  %29,  %6\l	 %30 = load  %4\l	 %31 = sext  %30\l	 %32 = getelementptr  stack,  0,  %31\l	 %33 = load  %32\l	 %34 = load  %6\l	 %35 = sext  %34\l	 %36 = getelementptr  cellspace,  0,  %35\l	 %37 = getelementptr  %36,  0,  1\l	 store  %33,  %37\l	 %38 = load  %6\l	 %39 = load  %4\l	 %40 = sext  %39\l	 %41 = getelementptr  stack,  0,  %40\l	 store  %38,  %41\l	 %42 = load  %3\l	 %43 = load  %6\l	 %44 = sext  %43\l	 %45 = getelementptr  cellspace,  0,  %44\l	 %46 = getelementptr  %45,  0,  0\l	 store  %42,  %46\l	 br BB47\l	}"];
+	BB28 -> BB47
+	BB47[shape=record,label="{BB47:\l\l
+	 call llvm.lifetime.end.p0(4, %6)\l	 call llvm.lifetime.end.p0(4, %5)\l	 ret \l	}"];
+}

@@ -1,0 +1,30 @@
+digraph "CFG of Mm function"{
+	BB1[shape=record,label="{BB1:\l\l
+	 %2 = alloca  1\l	 %3 = alloca  1\l	 %4 = alloca  1\l	 store  %0,  %2\l	 call llvm.lifetime.start.p0(4, %3)\l	 call llvm.lifetime.start.p0(4, %4)\l	 call Initrand()\l	 call rInitmatrix(rma)\l	 call rInitmatrix(rmb)\l	 store  1,  %3\l	 br BB5\l	}"];
+	BB1 -> BB5
+	BB5[shape=record,label="{BB5:\l\l
+	 %6 = load  %3\l	 %7 = icmp  %6,  40\l	 br %7, BB28, BB8\l	}"];
+	BB5 -> BB8
+	BB5 -> BB28
+	BB8[shape=record,label="{BB8:\l\l
+	 store  1,  %4\l	 br BB9\l	}"];
+	BB8 -> BB9
+	BB9[shape=record,label="{BB9:\l\l
+	 %10 = load  %4\l	 %11 = icmp  %10,  40\l	 br %11, BB24, BB12\l	}"];
+	BB9 -> BB12
+	BB9 -> BB24
+	BB12[shape=record,label="{BB12:\l\l
+	 %13 = load  %3\l	 %14 = sext  %13\l	 %15 = getelementptr  rmr,  0,  %14\l	 %16 = load  %4\l	 %17 = sext  %16\l	 %18 = getelementptr  %15,  0,  %17\l	 %19 = load  %3\l	 %20 = load  %4\l	 call rInnerproduct(%18, rma, rmb, %19, %20)\l	 br BB21\l	}"];
+	BB12 -> BB21
+	BB21[shape=record,label="{BB21:\l\l
+	 %22 = load  %4\l	 %23 = add  %22,  1\l	 store  %23,  %4\l	 br BB9\l	}"];
+	BB21 -> BB9
+	BB24[shape=record,label="{BB24:\l\l
+	 br BB25\l	}"];
+	BB24 -> BB25
+	BB25[shape=record,label="{BB25:\l\l
+	 %26 = load  %3\l	 %27 = add  %26,  1\l	 store  %27,  %3\l	 br BB5\l	}"];
+	BB25 -> BB5
+	BB28[shape=record,label="{BB28:\l\l
+	 %29 = load  %2\l	 %30 = add  %29,  1\l	 %31 = sext  %30\l	 %32 = getelementptr  rmr,  0,  %31\l	 %33 = load  %2\l	 %34 = add  %33,  1\l	 %35 = sext  %34\l	 %36 = getelementptr  %32,  0,  %35\l	 %37 = load  %36\l	 %38 = call printf(.str, %37)\l	 call llvm.lifetime.end.p0(4, %4)\l	 call llvm.lifetime.end.p0(4, %3)\l	 ret \l	}"];
+}

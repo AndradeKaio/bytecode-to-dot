@@ -1,0 +1,17 @@
+digraph "CFG of main function"{
+	BB0[shape=record,label="{BB0:\l\l
+	 %1 = alloca  1\l	 %2 = alloca  1\l	 store  0,  %1\l	 call llvm.lifetime.start.p0(4, %2)\l	 store  0,  %2\l	 br BB3\l	}"];
+	BB0 -> BB3
+	BB3[shape=record,label="{BB3:\l\l
+	 %4 = load  %2\l	 %5 = icmp  %4,  100\l	 br %5, BB11, BB6\l	}"];
+	BB3 -> BB6
+	BB3 -> BB11
+	BB6[shape=record,label="{BB6:\l\l
+	 %7 = load  %2\l	 call Quick(%7)\l	 br BB8\l	}"];
+	BB6 -> BB8
+	BB8[shape=record,label="{BB8:\l\l
+	 %9 = load  %2\l	 %10 = add  %9,  1\l	 store  %10,  %2\l	 br BB3\l	}"];
+	BB8 -> BB3
+	BB11[shape=record,label="{BB11:\l\l
+	 call llvm.lifetime.end.p0(4, %2)\l	 ret 0\l	}"];
+}

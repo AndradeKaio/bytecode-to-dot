@@ -1,0 +1,57 @@
+digraph "CFG of Fft function"{
+	BB5[shape=record,label="{BB5:\l\l
+	 %6 = alloca  1\l	 %7 = alloca  1\l	 %8 = alloca  1\l	 %9 = alloca  1\l	 %10 = alloca  1\l	 %11 = alloca  1\l	 %12 = alloca  1\l	 %13 = alloca  1\l	 %14 = alloca  1\l	 %15 = alloca  1\l	 %16 = alloca  1\l	 store  %0,  %6\l	 store  %1,  %7\l	 store  %2,  %8\l	 store  %3,  %9\l	 store  %4,  %10\l	 call llvm.lifetime.start.p0(4, %11)\l	 call llvm.lifetime.start.p0(4, %12)\l	 call llvm.lifetime.start.p0(4, %13)\l	 call llvm.lifetime.start.p0(4, %14)\l	 call llvm.lifetime.start.p0(4, %15)\l	 call llvm.lifetime.start.p0(4, %16)\l	 %17 = load  %6\l	 %18 = sdiv  %17,  2\l	 store  %18,  %15\l	 store  1,  %14\l	 br BB19\l	}"];
+	BB5 -> BB19
+	BB19[shape=record,label="{BB19:\l\l
+	 store  0,  %13\l	 %20 = load  %14\l	 store  %20,  %12\l	 store  1,  %11\l	 br BB21\l	}"];
+	BB19 -> BB21
+	BB21[shape=record,label="{BB21:\l\l
+	 br BB22\l	}"];
+	BB21 -> BB22
+	BB22[shape=record,label="{BB22:\l\l
+	 %23 = load  %7\l	 %24 = load  %11\l	 %25 = sext  %24\l	 %26 = getelementptr  %23,  %25\l	 %27 = getelementptr  %26,  0,  0\l	 %28 = load  %27\l	 %29 = load  %7\l	 %30 = load  %15\l	 %31 = load  %11\l	 %32 = add  %30,  %31\l	 %33 = sext  %32\l	 %34 = getelementptr  %29,  %33\l	 %35 = getelementptr  %34,  0,  0\l	 %36 = load  %35\l	 %37 = fadd  %28,  %36\l	 %38 = load  %8\l	 %39 = load  %11\l	 %40 = load  %13\l	 %41 = add  %39,  %40\l	 %42 = sext  %41\l	 %43 = getelementptr  %38,  %42\l	 %44 = getelementptr  %43,  0,  0\l	 store  %37,  %44\l	 %45 = load  %7\l	 %46 = load  %11\l	 %47 = sext  %46\l	 %48 = getelementptr  %45,  %47\l	 %49 = getelementptr  %48,  0,  1\l	 %50 = load  %49\l	 %51 = load  %7\l	 %52 = load  %15\l	 %53 = load  %11\l	 %54 = add  %52,  %53\l	 %55 = sext  %54\l	 %56 = getelementptr  %51,  %55\l	 %57 = getelementptr  %56,  0,  1\l	 %58 = load  %57\l	 %59 = fadd  %50,  %58\l	 %60 = load  %8\l	 %61 = load  %11\l	 %62 = load  %13\l	 %63 = add  %61,  %62\l	 %64 = sext  %63\l	 %65 = getelementptr  %60,  %64\l	 %66 = getelementptr  %65,  0,  1\l	 store  %59,  %66\l	 %67 = load  %9\l	 %68 = load  %13\l	 %69 = add  %68,  1\l	 %70 = sext  %69\l	 %71 = getelementptr  %67,  %70\l	 %72 = getelementptr  %71,  0,  0\l	 %73 = load  %72\l	 %74 = load  %7\l	 %75 = load  %11\l	 %76 = sext  %75\l	 %77 = getelementptr  %74,  %76\l	 %78 = getelementptr  %77,  0,  0\l	 %79 = load  %78\l	 %80 = load  %7\l	 %81 = load  %11\l	 %82 = load  %15\l	 %83 = add  %81,  %82\l	 %84 = sext  %83\l	 %85 = getelementptr  %80,  %84\l	 %86 = getelementptr  %85,  0,  0\l	 %87 = load  %86\l	 %88 = fsub  %79,  %87\l	 %89 = load  %9\l	 %90 = load  %13\l	 %91 = add  %90,  1\l	 %92 = sext  %91\l	 %93 = getelementptr  %89,  %92\l	 %94 = getelementptr  %93,  0,  1\l	 %95 = load  %94\l	 %96 = load  %7\l	 %97 = load  %11\l	 %98 = sext  %97\l	 %99 = getelementptr  %96,  %98\l	 %100 = getelementptr  %99,  0,  1\l	 %101 = load  %100\l	 %102 = load  %7\l	 %103 = load  %11\l	 %104 = load  %15\l	 %105 = add  %103,  %104\l	 %106 = sext  %105\l	 %107 = getelementptr  %102,  %106\l	 %108 = getelementptr  %107,  0,  1\l	 %109 = load  %108\l	 %110 = fsub  %101,  %109\l	 %111 = fmul  %95,  %110\l	 %112 = fneg  %111\l	 %113 = call llvm.fmuladd.f32(%73, %88, %112)\l	 %114 = load  %8\l	 %115 = load  %11\l	 %116 = load  %12\l	 %117 = add  %115,  %116\l	 %118 = sext  %117\l	 %119 = getelementptr  %114,  %118\l	 %120 = getelementptr  %119,  0,  0\l	 store  %113,  %120\l	 %121 = load  %9\l	 %122 = load  %13\l	 %123 = add  %122,  1\l	 %124 = sext  %123\l	 %125 = getelementptr  %121,  %124\l	 %126 = getelementptr  %125,  0,  0\l	 %127 = load  %126\l	 %128 = load  %7\l	 %129 = load  %11\l	 %130 = sext  %129\l	 %131 = getelementptr  %128,  %130\l	 %132 = getelementptr  %131,  0,  1\l	 %133 = load  %132\l	 %134 = load  %7\l	 %135 = load  %11\l	 %136 = load  %15\l	 %137 = add  %135,  %136\l	 %138 = sext  %137\l	 %139 = getelementptr  %134,  %138\l	 %140 = getelementptr  %139,  0,  1\l	 %141 = load  %140\l	 %142 = fsub  %133,  %141\l	 %143 = load  %9\l	 %144 = load  %13\l	 %145 = add  %144,  1\l	 %146 = sext  %145\l	 %147 = getelementptr  %143,  %146\l	 %148 = getelementptr  %147,  0,  1\l	 %149 = load  %148\l	 %150 = load  %7\l	 %151 = load  %11\l	 %152 = sext  %151\l	 %153 = getelementptr  %150,  %152\l	 %154 = getelementptr  %153,  0,  0\l	 %155 = load  %154\l	 %156 = load  %7\l	 %157 = load  %11\l	 %158 = load  %15\l	 %159 = add  %157,  %158\l	 %160 = sext  %159\l	 %161 = getelementptr  %156,  %160\l	 %162 = getelementptr  %161,  0,  0\l	 %163 = load  %162\l	 %164 = fsub  %155,  %163\l	 %165 = fmul  %149,  %164\l	 %166 = call llvm.fmuladd.f32(%127, %142, %165)\l	 %167 = load  %8\l	 %168 = load  %11\l	 %169 = load  %12\l	 %170 = add  %168,  %169\l	 %171 = sext  %170\l	 %172 = getelementptr  %167,  %171\l	 %173 = getelementptr  %172,  0,  1\l	 store  %166,  %173\l	 %174 = load  %11\l	 %175 = add  %174,  1\l	 store  %175,  %11\l	 br BB176\l	}"];
+	BB22 -> BB176
+	BB176[shape=record,label="{BB176:\l\l
+	 %177 = load  %11\l	 %178 = load  %12\l	 %179 = icmp  %177,  %178\l	 br %179, BB180, BB22\l	}"];
+	BB176 -> BB22
+	BB176 -> BB180
+	BB180[shape=record,label="{BB180:\l\l
+	 %181 = load  %12\l	 store  %181,  %13\l	 %182 = load  %13\l	 %183 = load  %14\l	 %184 = add  %182,  %183\l	 store  %184,  %12\l	 br BB185\l	}"];
+	BB180 -> BB185
+	BB185[shape=record,label="{BB185:\l\l
+	 %186 = load  %12\l	 %187 = load  %15\l	 %188 = icmp  %186,  %187\l	 br %188, BB189, BB21\l	}"];
+	BB185 -> BB21
+	BB185 -> BB189
+	BB189[shape=record,label="{BB189:\l\l
+	 store  1,  %16\l	 br BB190\l	}"];
+	BB189 -> BB190
+	BB190[shape=record,label="{BB190:\l\l
+	 %191 = load  %7\l	 %192 = load  %16\l	 %193 = sext  %192\l	 %194 = getelementptr  %191,  %193\l	 %195 = load  %8\l	 %196 = load  %16\l	 %197 = sext  %196\l	 %198 = getelementptr  %195,  %197\l	 call llvm.memcpy.p0.p0.i64(%194, %198, 8, false)\l	 %199 = load  %16\l	 %200 = add  %199,  1\l	 store  %200,  %16\l	 br BB201\l	}"];
+	BB190 -> BB201
+	BB201[shape=record,label="{BB201:\l\l
+	 %202 = load  %16\l	 %203 = load  %6\l	 %204 = icmp  %202,  %203\l	 br %204, BB205, BB190\l	}"];
+	BB201 -> BB190
+	BB201 -> BB205
+	BB205[shape=record,label="{BB205:\l\l
+	 %206 = load  %14\l	 %207 = load  %14\l	 %208 = add  %206,  %207\l	 store  %208,  %14\l	 br BB209\l	}"];
+	BB205 -> BB209
+	BB209[shape=record,label="{BB209:\l\l
+	 %210 = load  %14\l	 %211 = load  %15\l	 %212 = icmp  %210,  %211\l	 br %212, BB213, BB19\l	}"];
+	BB209 -> BB19
+	BB209 -> BB213
+	BB213[shape=record,label="{BB213:\l\l
+	 store  1,  %11\l	 br BB214\l	}"];
+	BB213 -> BB214
+	BB214[shape=record,label="{BB214:\l\l
+	 %215 = load  %11\l	 %216 = load  %6\l	 %217 = icmp  %215,  %216\l	 br %217, BB249, BB218\l	}"];
+	BB214 -> BB218
+	BB214 -> BB249
+	BB218[shape=record,label="{BB218:\l\l
+	 %219 = load  %10\l	 %220 = load  %7\l	 %221 = load  %11\l	 %222 = sext  %221\l	 %223 = getelementptr  %220,  %222\l	 %224 = getelementptr  %223,  0,  0\l	 %225 = load  %224\l	 %226 = fmul  %219,  %225\l	 %227 = load  %7\l	 %228 = load  %11\l	 %229 = sext  %228\l	 %230 = getelementptr  %227,  %229\l	 %231 = getelementptr  %230,  0,  0\l	 store  %226,  %231\l	 %232 = load  %10\l	 %233 = fneg  %232\l	 %234 = load  %7\l	 %235 = load  %11\l	 %236 = sext  %235\l	 %237 = getelementptr  %234,  %236\l	 %238 = getelementptr  %237,  0,  1\l	 %239 = load  %238\l	 %240 = fmul  %233,  %239\l	 %241 = load  %7\l	 %242 = load  %11\l	 %243 = sext  %242\l	 %244 = getelementptr  %241,  %243\l	 %245 = getelementptr  %244,  0,  1\l	 store  %240,  %245\l	 br BB246\l	}"];
+	BB218 -> BB246
+	BB246[shape=record,label="{BB246:\l\l
+	 %247 = load  %11\l	 %248 = add  %247,  1\l	 store  %248,  %11\l	 br BB214\l	}"];
+	BB246 -> BB214
+	BB249[shape=record,label="{BB249:\l\l
+	 call llvm.lifetime.end.p0(4, %16)\l	 call llvm.lifetime.end.p0(4, %15)\l	 call llvm.lifetime.end.p0(4, %14)\l	 call llvm.lifetime.end.p0(4, %13)\l	 call llvm.lifetime.end.p0(4, %12)\l	 call llvm.lifetime.end.p0(4, %11)\l	 ret \l	}"];
+}

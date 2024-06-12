@@ -1,0 +1,4 @@
+digraph "CFG of Makenull function"{
+	BB1[shape=record,label="{BB1:\l\l
+	 %2 = alloca  1\l	 store  %0,  %2\l	 %3 = load  %2\l	 %4 = sext  %3\l	 %5 = getelementptr  stack,  0,  %4\l	 store  0,  %5\l	 ret \l	}"];
+}

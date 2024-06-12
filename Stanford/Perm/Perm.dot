@@ -1,0 +1,24 @@
+digraph "CFG of Perm function"{
+	BB0[shape=record,label="{BB0:\l\l
+	 %1 = alloca  1\l	 call llvm.lifetime.start.p0(4, %1)\l	 store  0,  pctr\l	 store  1,  %1\l	 br BB2\l	}"];
+	BB0 -> BB2
+	BB2[shape=record,label="{BB2:\l\l
+	 %3 = load  %1\l	 %4 = icmp  %3,  5\l	 br %4, BB9, BB5\l	}"];
+	BB2 -> BB5
+	BB2 -> BB9
+	BB5[shape=record,label="{BB5:\l\l
+	 call Initialize()\l	 call Permute(7)\l	 br BB6\l	}"];
+	BB5 -> BB6
+	BB6[shape=record,label="{BB6:\l\l
+	 %7 = load  %1\l	 %8 = add  %7,  1\l	 store  %8,  %1\l	 br BB2\l	}"];
+	BB6 -> BB2
+	BB9[shape=record,label="{BB9:\l\l
+	 %10 = load  pctr\l	 %11 = icmp  %10,  43300\l	 br %11, BB14, BB12\l	}"];
+	BB9 -> BB12
+	BB9 -> BB14
+	BB12[shape=record,label="{BB12:\l\l
+	 %13 = call printf(.str)\l	 br BB14\l	}"];
+	BB12 -> BB14
+	BB14[shape=record,label="{BB14:\l\l
+	 %15 = load  pctr\l	 %16 = call printf(.str.1, %15)\l	 call llvm.lifetime.end.p0(4, %1)\l	 ret \l	}"];
+}

@@ -1,0 +1,24 @@
+digraph "CFG of Remove function"{
+	BB2[shape=record,label="{BB2:\l\l
+	 %3 = alloca  1\l	 %4 = alloca  1\l	 %5 = alloca  1\l	 store  %0,  %3\l	 store  %1,  %4\l	 call llvm.lifetime.start.p0(4, %5)\l	 store  0,  %5\l	 br BB6\l	}"];
+	BB2 -> BB6
+	BB6[shape=record,label="{BB6:\l\l
+	 %7 = load  %5\l	 %8 = load  %3\l	 %9 = sext  %8\l	 %10 = getelementptr  piecemax,  0,  %9\l	 %11 = load  %10\l	 %12 = icmp  %7,  %11\l	 br %12, BB32, BB13\l	}"];
+	BB6 -> BB13
+	BB6 -> BB32
+	BB13[shape=record,label="{BB13:\l\l
+	 %14 = load  %3\l	 %15 = sext  %14\l	 %16 = getelementptr  p,  0,  %15\l	 %17 = load  %5\l	 %18 = sext  %17\l	 %19 = getelementptr  %16,  0,  %18\l	 %20 = load  %19\l	 %21 = icmp  %20,  0\l	 br %21, BB28, BB22\l	}"];
+	BB13 -> BB22
+	BB13 -> BB28
+	BB22[shape=record,label="{BB22:\l\l
+	 %23 = load  %4\l	 %24 = load  %5\l	 %25 = add  %23,  %24\l	 %26 = sext  %25\l	 %27 = getelementptr  puzzl,  0,  %26\l	 store  0,  %27\l	 br BB28\l	}"];
+	BB22 -> BB28
+	BB28[shape=record,label="{BB28:\l\l
+	 br BB29\l	}"];
+	BB28 -> BB29
+	BB29[shape=record,label="{BB29:\l\l
+	 %30 = load  %5\l	 %31 = add  %30,  1\l	 store  %31,  %5\l	 br BB6\l	}"];
+	BB29 -> BB6
+	BB32[shape=record,label="{BB32:\l\l
+	 %33 = load  %3\l	 %34 = sext  %33\l	 %35 = getelementptr  class,  0,  %34\l	 %36 = load  %35\l	 %37 = sext  %36\l	 %38 = getelementptr  piececount,  0,  %37\l	 %39 = load  %38\l	 %40 = add  %39,  1\l	 %41 = load  %3\l	 %42 = sext  %41\l	 %43 = getelementptr  class,  0,  %42\l	 %44 = load  %43\l	 %45 = sext  %44\l	 %46 = getelementptr  piececount,  0,  %45\l	 store  %40,  %46\l	 call llvm.lifetime.end.p0(4, %5)\l	 ret \l	}"];
+}

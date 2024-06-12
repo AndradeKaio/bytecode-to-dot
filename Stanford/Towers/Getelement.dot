@@ -1,0 +1,14 @@
+digraph "CFG of Getelement function"{
+	BB0[shape=record,label="{BB0:\l\l
+	 %1 = alloca  1\l	 call llvm.lifetime.start.p0(4, %1)\l	 store  0,  %1\l	 %2 = load  freelist\l	 %3 = icmp  %2,  0\l	 br %3, BB11, BB4\l	}"];
+	BB0 -> BB4
+	BB0 -> BB11
+	BB4[shape=record,label="{BB4:\l\l
+	 %5 = load  freelist\l	 store  %5,  %1\l	 %6 = load  freelist\l	 %7 = sext  %6\l	 %8 = getelementptr  cellspace,  0,  %7\l	 %9 = getelementptr  %8,  0,  1\l	 %10 = load  %9\l	 store  %10,  freelist\l	 br BB12\l	}"];
+	BB4 -> BB12
+	BB11[shape=record,label="{BB11:\l\l
+	 call Error(.str.1)\l	 br BB12\l	}"];
+	BB11 -> BB12
+	BB12[shape=record,label="{BB12:\l\l
+	 %13 = load  %1\l	 call llvm.lifetime.end.p0(4, %1)\l	 ret %13\l	}"];
+}

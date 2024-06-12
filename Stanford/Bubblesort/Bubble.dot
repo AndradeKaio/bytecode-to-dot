@@ -1,0 +1,42 @@
+digraph "CFG of Bubble function"{
+	BB1[shape=record,label="{BB1:\l\l
+	 %2 = alloca  1\l	 %3 = alloca  1\l	 %4 = alloca  1\l	 store  %0,  %2\l	 call llvm.lifetime.start.p0(4, %3)\l	 call llvm.lifetime.start.p0(4, %4)\l	 call bInitarr()\l	 store  500,  top\l	 br BB5\l	}"];
+	BB1 -> BB5
+	BB5[shape=record,label="{BB5:\l\l
+	 %6 = load  top\l	 %7 = icmp  %6,  1\l	 br %7, BB48, BB8\l	}"];
+	BB5 -> BB8
+	BB5 -> BB48
+	BB8[shape=record,label="{BB8:\l\l
+	 store  1,  %3\l	 br BB9\l	}"];
+	BB8 -> BB9
+	BB9[shape=record,label="{BB9:\l\l
+	 %10 = load  %3\l	 %11 = load  top\l	 %12 = icmp  %10,  %11\l	 br %12, BB45, BB13\l	}"];
+	BB9 -> BB13
+	BB9 -> BB45
+	BB13[shape=record,label="{BB13:\l\l
+	 %14 = load  %3\l	 %15 = sext  %14\l	 %16 = getelementptr  sortlist,  0,  %15\l	 %17 = load  %16\l	 %18 = load  %3\l	 %19 = add  %18,  1\l	 %20 = sext  %19\l	 %21 = getelementptr  sortlist,  0,  %20\l	 %22 = load  %21\l	 %23 = icmp  %17,  %22\l	 br %23, BB42, BB24\l	}"];
+	BB13 -> BB24
+	BB13 -> BB42
+	BB24[shape=record,label="{BB24:\l\l
+	 %25 = load  %3\l	 %26 = sext  %25\l	 %27 = getelementptr  sortlist,  0,  %26\l	 %28 = load  %27\l	 store  %28,  %4\l	 %29 = load  %3\l	 %30 = add  %29,  1\l	 %31 = sext  %30\l	 %32 = getelementptr  sortlist,  0,  %31\l	 %33 = load  %32\l	 %34 = load  %3\l	 %35 = sext  %34\l	 %36 = getelementptr  sortlist,  0,  %35\l	 store  %33,  %36\l	 %37 = load  %4\l	 %38 = load  %3\l	 %39 = add  %38,  1\l	 %40 = sext  %39\l	 %41 = getelementptr  sortlist,  0,  %40\l	 store  %37,  %41\l	 br BB42\l	}"];
+	BB24 -> BB42
+	BB42[shape=record,label="{BB42:\l\l
+	 %43 = load  %3\l	 %44 = add  %43,  1\l	 store  %44,  %3\l	 br BB9\l	}"];
+	BB42 -> BB9
+	BB45[shape=record,label="{BB45:\l\l
+	 %46 = load  top\l	 %47 = sub  %46,  1\l	 store  %47,  top\l	 br BB5\l	}"];
+	BB45 -> BB5
+	BB48[shape=record,label="{BB48:\l\l
+	 %49 = load  getelementptr inbounds ([5001 x i32], ptr @sortlist, i64 0, i64 1)\l	 %50 = load  littlest\l	 %51 = icmp  %49,  %50\l	 br %51, BB52, BB56\l	}"];
+	BB48 -> BB56
+	BB48 -> BB52
+	BB52[shape=record,label="{BB52:\l\l
+	 %53 = load  getelementptr inbounds ([5001 x i32], ptr @sortlist, i64 0, i64 500)\l	 %54 = load  biggest\l	 %55 = icmp  %53,  %54\l	 br %55, BB58, BB56\l	}"];
+	BB52 -> BB56
+	BB52 -> BB58
+	BB56[shape=record,label="{BB56:\l\l
+	 %57 = call printf(.str)\l	 br BB58\l	}"];
+	BB56 -> BB58
+	BB58[shape=record,label="{BB58:\l\l
+	 %59 = load  %2\l	 %60 = add  %59,  1\l	 %61 = sext  %60\l	 %62 = getelementptr  sortlist,  0,  %61\l	 %63 = load  %62\l	 %64 = call printf(.str.1, %63)\l	 call llvm.lifetime.end.p0(4, %4)\l	 call llvm.lifetime.end.p0(4, %3)\l	 ret \l	}"];
+}

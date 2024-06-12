@@ -1,0 +1,4 @@
+digraph "CFG of Rand function"{
+	BB0[shape=record,label="{BB0:\l\l
+	 %1 = load  seed\l	 %2 = mul  %1,  1309\l	 %3 = add  %2,  13849\l	 %4 = and  %3,  65535\l	 store  %4,  seed\l	 %5 = load  seed\l	 %6 = trunc  %5\l	 ret %6\l	}"];
+}

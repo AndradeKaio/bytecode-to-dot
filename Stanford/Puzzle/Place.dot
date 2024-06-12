@@ -1,0 +1,47 @@
+digraph "CFG of Place function"{
+	BB2[shape=record,label="{BB2:\l\l
+	 %3 = alloca  1\l	 %4 = alloca  1\l	 %5 = alloca  1\l	 %6 = alloca  1\l	 %7 = alloca  1\l	 store  %0,  %4\l	 store  %1,  %5\l	 call llvm.lifetime.start.p0(4, %6)\l	 store  0,  %6\l	 br BB8\l	}"];
+	BB2 -> BB8
+	BB8[shape=record,label="{BB8:\l\l
+	 %9 = load  %6\l	 %10 = load  %4\l	 %11 = sext  %10\l	 %12 = getelementptr  piecemax,  0,  %11\l	 %13 = load  %12\l	 %14 = icmp  %9,  %13\l	 br %14, BB34, BB15\l	}"];
+	BB8 -> BB15
+	BB8 -> BB34
+	BB15[shape=record,label="{BB15:\l\l
+	 %16 = load  %4\l	 %17 = sext  %16\l	 %18 = getelementptr  p,  0,  %17\l	 %19 = load  %6\l	 %20 = sext  %19\l	 %21 = getelementptr  %18,  0,  %20\l	 %22 = load  %21\l	 %23 = icmp  %22,  0\l	 br %23, BB30, BB24\l	}"];
+	BB15 -> BB24
+	BB15 -> BB30
+	BB24[shape=record,label="{BB24:\l\l
+	 %25 = load  %5\l	 %26 = load  %6\l	 %27 = add  %25,  %26\l	 %28 = sext  %27\l	 %29 = getelementptr  puzzl,  0,  %28\l	 store  1,  %29\l	 br BB30\l	}"];
+	BB24 -> BB30
+	BB30[shape=record,label="{BB30:\l\l
+	 br BB31\l	}"];
+	BB30 -> BB31
+	BB31[shape=record,label="{BB31:\l\l
+	 %32 = load  %6\l	 %33 = add  %32,  1\l	 store  %33,  %6\l	 br BB8\l	}"];
+	BB31 -> BB8
+	BB34[shape=record,label="{BB34:\l\l
+	 %35 = load  %4\l	 %36 = sext  %35\l	 %37 = getelementptr  class,  0,  %36\l	 %38 = load  %37\l	 %39 = sext  %38\l	 %40 = getelementptr  piececount,  0,  %39\l	 %41 = load  %40\l	 %42 = sub  %41,  1\l	 %43 = load  %4\l	 %44 = sext  %43\l	 %45 = getelementptr  class,  0,  %44\l	 %46 = load  %45\l	 %47 = sext  %46\l	 %48 = getelementptr  piececount,  0,  %47\l	 store  %42,  %48\l	 %49 = load  %5\l	 store  %49,  %6\l	 br BB50\l	}"];
+	BB34 -> BB50
+	BB50[shape=record,label="{BB50:\l\l
+	 %51 = load  %6\l	 %52 = icmp  %51,  511\l	 br %52, BB65, BB53\l	}"];
+	BB50 -> BB53
+	BB50 -> BB65
+	BB53[shape=record,label="{BB53:\l\l
+	 %54 = load  %6\l	 %55 = sext  %54\l	 %56 = getelementptr  puzzl,  0,  %55\l	 %57 = load  %56\l	 %58 = icmp  %57,  0\l	 br %58, BB59, BB61\l	}"];
+	BB53 -> BB61
+	BB53 -> BB59
+	BB59[shape=record,label="{BB59:\l\l
+	 %60 = load  %6\l	 store  %60,  %3\l	 store  1,  %7\l	 br BB66\l	}"];
+	BB59 -> BB66
+	BB61[shape=record,label="{BB61:\l\l
+	 br BB62\l	}"];
+	BB61 -> BB62
+	BB62[shape=record,label="{BB62:\l\l
+	 %63 = load  %6\l	 %64 = add  %63,  1\l	 store  %64,  %6\l	 br BB50\l	}"];
+	BB62 -> BB50
+	BB65[shape=record,label="{BB65:\l\l
+	 store  0,  %3\l	 store  1,  %7\l	 br BB66\l	}"];
+	BB65 -> BB66
+	BB66[shape=record,label="{BB66:\l\l
+	 call llvm.lifetime.end.p0(4, %6)\l	 %67 = load  %3\l	 ret %67\l	}"];
+}

@@ -1,0 +1,17 @@
+digraph "CFG of Queens function"{
+	BB1[shape=record,label="{BB1:\l\l
+	 %2 = alloca  1\l	 %3 = alloca  1\l	 store  %0,  %2\l	 call llvm.lifetime.start.p0(4, %3)\l	 store  1,  %3\l	 br BB4\l	}"];
+	BB1 -> BB4
+	BB4[shape=record,label="{BB4:\l\l
+	 %5 = load  %3\l	 %6 = icmp  %5,  50\l	 br %6, BB11, BB7\l	}"];
+	BB4 -> BB7
+	BB4 -> BB11
+	BB7[shape=record,label="{BB7:\l\l
+	 call Doit()\l	 br BB8\l	}"];
+	BB7 -> BB8
+	BB8[shape=record,label="{BB8:\l\l
+	 %9 = load  %3\l	 %10 = add  %9,  1\l	 store  %10,  %3\l	 br BB4\l	}"];
+	BB8 -> BB4
+	BB11[shape=record,label="{BB11:\l\l
+	 %12 = load  %2\l	 %13 = add  %12,  1\l	 %14 = call printf(.str.1, %13)\l	 call llvm.lifetime.end.p0(4, %3)\l	 ret \l	}"];
+}

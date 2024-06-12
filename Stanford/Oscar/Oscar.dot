@@ -1,0 +1,30 @@
+digraph "CFG of Oscar function"{
+	BB0[shape=record,label="{BB0:\l\l
+	 %1 = alloca  1\l	 %2 = alloca  1\l	 call llvm.lifetime.start.p0(4, %1)\l	 call Exptab(256, e)\l	 store  5767,  seed\l	 store  1,  %1\l	 br BB3\l	}"];
+	BB0 -> BB3
+	BB3[shape=record,label="{BB3:\l\l
+	 %4 = load  %1\l	 %5 = icmp  %4,  256\l	 br %5, BB28, BB6\l	}"];
+	BB3 -> BB6
+	BB3 -> BB28
+	BB6[shape=record,label="{BB6:\l\l
+	 call llvm.lifetime.start.p0(4, %2)\l	 %7 = load  seed\l	 %8 = trunc  %7\l	 store  %8,  %2\l	 call Uniform11(%2, zr)\l	 %9 = load  %2\l	 %10 = sext  %9\l	 store  %10,  seed\l	 call Uniform11(%2, zi)\l	 %11 = load  %2\l	 %12 = sext  %11\l	 store  %12,  seed\l	 %13 = load  zr\l	 %14 = call llvm.fmuladd.f32(2.000000e+01, %13, -1.000000e+01)\l	 %15 = load  %1\l	 %16 = sext  %15\l	 %17 = getelementptr  z,  0,  %16\l	 %18 = getelementptr  %17,  0,  0\l	 store  %14,  %18\l	 %19 = load  zi\l	 %20 = call llvm.fmuladd.f32(2.000000e+01, %19, -1.000000e+01)\l	 %21 = load  %1\l	 %22 = sext  %21\l	 %23 = getelementptr  z,  0,  %22\l	 %24 = getelementptr  %23,  0,  1\l	 store  %20,  %24\l	 call llvm.lifetime.end.p0(4, %2)\l	 br BB25\l	}"];
+	BB6 -> BB25
+	BB25[shape=record,label="{BB25:\l\l
+	 %26 = load  %1\l	 %27 = add  %26,  1\l	 store  %27,  %1\l	 br BB3\l	}"];
+	BB25 -> BB3
+	BB28[shape=record,label="{BB28:\l\l
+	 store  1,  %1\l	 br BB29\l	}"];
+	BB28 -> BB29
+	BB29[shape=record,label="{BB29:\l\l
+	 %30 = load  %1\l	 %31 = icmp  %30,  20\l	 br %31, BB36, BB32\l	}"];
+	BB29 -> BB32
+	BB29 -> BB36
+	BB32[shape=record,label="{BB32:\l\l
+	 call Fft(256, z, w, e, 6.250000e-02)\l	 br BB33\l	}"];
+	BB32 -> BB33
+	BB33[shape=record,label="{BB33:\l\l
+	 %34 = load  %1\l	 %35 = add  %34,  1\l	 store  %35,  %1\l	 br BB29\l	}"];
+	BB33 -> BB29
+	BB36[shape=record,label="{BB36:\l\l
+	 call Printcomplex(z, 1, 256, 17)\l	 call llvm.lifetime.end.p0(4, %1)\l	 ret \l	}"];
+}

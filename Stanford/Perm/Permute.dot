@@ -1,0 +1,24 @@
+digraph "CFG of Permute function"{
+	BB1[shape=record,label="{BB1:\l\l
+	 %2 = alloca  1\l	 %3 = alloca  1\l	 store  %0,  %2\l	 call llvm.lifetime.start.p0(4, %3)\l	 %4 = load  pctr\l	 %5 = add  %4,  1\l	 store  %5,  pctr\l	 %6 = load  %2\l	 %7 = icmp  %6,  1\l	 br %7, BB35, BB8\l	}"];
+	BB1 -> BB8
+	BB1 -> BB35
+	BB8[shape=record,label="{BB8:\l\l
+	 %9 = load  %2\l	 %10 = sub  %9,  1\l	 call Permute(%10)\l	 %11 = load  %2\l	 %12 = sub  %11,  1\l	 store  %12,  %3\l	 br BB13\l	}"];
+	BB8 -> BB13
+	BB13[shape=record,label="{BB13:\l\l
+	 %14 = load  %3\l	 %15 = icmp  %14,  1\l	 br %15, BB34, BB16\l	}"];
+	BB13 -> BB16
+	BB13 -> BB34
+	BB16[shape=record,label="{BB16:\l\l
+	 %17 = load  %2\l	 %18 = sext  %17\l	 %19 = getelementptr  permarray,  0,  %18\l	 %20 = load  %3\l	 %21 = sext  %20\l	 %22 = getelementptr  permarray,  0,  %21\l	 call Swap(%19, %22)\l	 %23 = load  %2\l	 %24 = sub  %23,  1\l	 call Permute(%24)\l	 %25 = load  %2\l	 %26 = sext  %25\l	 %27 = getelementptr  permarray,  0,  %26\l	 %28 = load  %3\l	 %29 = sext  %28\l	 %30 = getelementptr  permarray,  0,  %29\l	 call Swap(%27, %30)\l	 br BB31\l	}"];
+	BB16 -> BB31
+	BB31[shape=record,label="{BB31:\l\l
+	 %32 = load  %3\l	 %33 = add  %32,  -1\l	 store  %33,  %3\l	 br BB13\l	}"];
+	BB31 -> BB13
+	BB34[shape=record,label="{BB34:\l\l
+	 br BB35\l	}"];
+	BB34 -> BB35
+	BB35[shape=record,label="{BB35:\l\l
+	 call llvm.lifetime.end.p0(4, %3)\l	 ret \l	}"];
+}

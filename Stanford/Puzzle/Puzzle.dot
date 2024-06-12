@@ -1,0 +1,616 @@
+digraph "CFG of Puzzle function"{
+	BB0[shape=record,label="{BB0:\l\l
+	 %1 = alloca  1\l	 %2 = alloca  1\l	 %3 = alloca  1\l	 %4 = alloca  1\l	 call llvm.lifetime.start.p0(4, %1)\l	 call llvm.lifetime.start.p0(4, %2)\l	 call llvm.lifetime.start.p0(4, %3)\l	 call llvm.lifetime.start.p0(4, %4)\l	 store  0,  %4\l	 br BB5\l	}"];
+	BB0 -> BB5
+	BB5[shape=record,label="{BB5:\l\l
+	 %6 = load  %4\l	 %7 = icmp  %6,  511\l	 br %7, BB15, BB8\l	}"];
+	BB5 -> BB8
+	BB5 -> BB15
+	BB8[shape=record,label="{BB8:\l\l
+	 %9 = load  %4\l	 %10 = sext  %9\l	 %11 = getelementptr  puzzl,  0,  %10\l	 store  1,  %11\l	 br BB12\l	}"];
+	BB8 -> BB12
+	BB12[shape=record,label="{BB12:\l\l
+	 %13 = load  %4\l	 %14 = add  %13,  1\l	 store  %14,  %4\l	 br BB5\l	}"];
+	BB12 -> BB5
+	BB15[shape=record,label="{BB15:\l\l
+	 store  1,  %1\l	 br BB16\l	}"];
+	BB15 -> BB16
+	BB16[shape=record,label="{BB16:\l\l
+	 %17 = load  %1\l	 %18 = icmp  %17,  5\l	 br %18, BB48, BB19\l	}"];
+	BB16 -> BB19
+	BB16 -> BB48
+	BB19[shape=record,label="{BB19:\l\l
+	 store  1,  %2\l	 br BB20\l	}"];
+	BB19 -> BB20
+	BB20[shape=record,label="{BB20:\l\l
+	 %21 = load  %2\l	 %22 = icmp  %21,  5\l	 br %22, BB44, BB23\l	}"];
+	BB20 -> BB23
+	BB20 -> BB44
+	BB23[shape=record,label="{BB23:\l\l
+	 store  1,  %3\l	 br BB24\l	}"];
+	BB23 -> BB24
+	BB24[shape=record,label="{BB24:\l\l
+	 %25 = load  %3\l	 %26 = icmp  %25,  5\l	 br %26, BB40, BB27\l	}"];
+	BB24 -> BB27
+	BB24 -> BB40
+	BB27[shape=record,label="{BB27:\l\l
+	 %28 = load  %1\l	 %29 = load  %2\l	 %30 = load  %3\l	 %31 = mul  8,  %30\l	 %32 = add  %29,  %31\l	 %33 = mul  8,  %32\l	 %34 = add  %28,  %33\l	 %35 = sext  %34\l	 %36 = getelementptr  puzzl,  0,  %35\l	 store  0,  %36\l	 br BB37\l	}"];
+	BB27 -> BB37
+	BB37[shape=record,label="{BB37:\l\l
+	 %38 = load  %3\l	 %39 = add  %38,  1\l	 store  %39,  %3\l	 br BB24\l	}"];
+	BB37 -> BB24
+	BB40[shape=record,label="{BB40:\l\l
+	 br BB41\l	}"];
+	BB40 -> BB41
+	BB41[shape=record,label="{BB41:\l\l
+	 %42 = load  %2\l	 %43 = add  %42,  1\l	 store  %43,  %2\l	 br BB20\l	}"];
+	BB41 -> BB20
+	BB44[shape=record,label="{BB44:\l\l
+	 br BB45\l	}"];
+	BB44 -> BB45
+	BB45[shape=record,label="{BB45:\l\l
+	 %46 = load  %1\l	 %47 = add  %46,  1\l	 store  %47,  %1\l	 br BB16\l	}"];
+	BB45 -> BB16
+	BB48[shape=record,label="{BB48:\l\l
+	 store  0,  %1\l	 br BB49\l	}"];
+	BB48 -> BB49
+	BB49[shape=record,label="{BB49:\l\l
+	 %50 = load  %1\l	 %51 = icmp  %50,  12\l	 br %51, BB70, BB52\l	}"];
+	BB49 -> BB52
+	BB49 -> BB70
+	BB52[shape=record,label="{BB52:\l\l
+	 store  0,  %4\l	 br BB53\l	}"];
+	BB52 -> BB53
+	BB53[shape=record,label="{BB53:\l\l
+	 %54 = load  %4\l	 %55 = icmp  %54,  511\l	 br %55, BB66, BB56\l	}"];
+	BB53 -> BB56
+	BB53 -> BB66
+	BB56[shape=record,label="{BB56:\l\l
+	 %57 = load  %1\l	 %58 = sext  %57\l	 %59 = getelementptr  p,  0,  %58\l	 %60 = load  %4\l	 %61 = sext  %60\l	 %62 = getelementptr  %59,  0,  %61\l	 store  0,  %62\l	 br BB63\l	}"];
+	BB56 -> BB63
+	BB63[shape=record,label="{BB63:\l\l
+	 %64 = load  %4\l	 %65 = add  %64,  1\l	 store  %65,  %4\l	 br BB53\l	}"];
+	BB63 -> BB53
+	BB66[shape=record,label="{BB66:\l\l
+	 br BB67\l	}"];
+	BB66 -> BB67
+	BB67[shape=record,label="{BB67:\l\l
+	 %68 = load  %1\l	 %69 = add  %68,  1\l	 store  %69,  %1\l	 br BB49\l	}"];
+	BB67 -> BB49
+	BB70[shape=record,label="{BB70:\l\l
+	 store  0,  %1\l	 br BB71\l	}"];
+	BB70 -> BB71
+	BB71[shape=record,label="{BB71:\l\l
+	 %72 = load  %1\l	 %73 = icmp  %72,  3\l	 br %73, BB103, BB74\l	}"];
+	BB71 -> BB74
+	BB71 -> BB103
+	BB74[shape=record,label="{BB74:\l\l
+	 store  0,  %2\l	 br BB75\l	}"];
+	BB74 -> BB75
+	BB75[shape=record,label="{BB75:\l\l
+	 %76 = load  %2\l	 %77 = icmp  %76,  1\l	 br %77, BB99, BB78\l	}"];
+	BB75 -> BB78
+	BB75 -> BB99
+	BB78[shape=record,label="{BB78:\l\l
+	 store  0,  %3\l	 br BB79\l	}"];
+	BB78 -> BB79
+	BB79[shape=record,label="{BB79:\l\l
+	 %80 = load  %3\l	 %81 = icmp  %80,  0\l	 br %81, BB95, BB82\l	}"];
+	BB79 -> BB82
+	BB79 -> BB95
+	BB82[shape=record,label="{BB82:\l\l
+	 %83 = load  %1\l	 %84 = load  %2\l	 %85 = load  %3\l	 %86 = mul  8,  %85\l	 %87 = add  %84,  %86\l	 %88 = mul  8,  %87\l	 %89 = add  %83,  %88\l	 %90 = sext  %89\l	 %91 = getelementptr  p,  0,  %90\l	 store  1,  %91\l	 br BB92\l	}"];
+	BB82 -> BB92
+	BB92[shape=record,label="{BB92:\l\l
+	 %93 = load  %3\l	 %94 = add  %93,  1\l	 store  %94,  %3\l	 br BB79\l	}"];
+	BB92 -> BB79
+	BB95[shape=record,label="{BB95:\l\l
+	 br BB96\l	}"];
+	BB95 -> BB96
+	BB96[shape=record,label="{BB96:\l\l
+	 %97 = load  %2\l	 %98 = add  %97,  1\l	 store  %98,  %2\l	 br BB75\l	}"];
+	BB96 -> BB75
+	BB99[shape=record,label="{BB99:\l\l
+	 br BB100\l	}"];
+	BB99 -> BB100
+	BB100[shape=record,label="{BB100:\l\l
+	 %101 = load  %1\l	 %102 = add  %101,  1\l	 store  %102,  %1\l	 br BB71\l	}"];
+	BB100 -> BB71
+	BB103[shape=record,label="{BB103:\l\l
+	 store  0,  class\l	 store  11,  piecemax\l	 store  0,  %1\l	 br BB104\l	}"];
+	BB103 -> BB104
+	BB104[shape=record,label="{BB104:\l\l
+	 %105 = load  %1\l	 %106 = icmp  %105,  1\l	 br %106, BB136, BB107\l	}"];
+	BB104 -> BB107
+	BB104 -> BB136
+	BB107[shape=record,label="{BB107:\l\l
+	 store  0,  %2\l	 br BB108\l	}"];
+	BB107 -> BB108
+	BB108[shape=record,label="{BB108:\l\l
+	 %109 = load  %2\l	 %110 = icmp  %109,  0\l	 br %110, BB132, BB111\l	}"];
+	BB108 -> BB111
+	BB108 -> BB132
+	BB111[shape=record,label="{BB111:\l\l
+	 store  0,  %3\l	 br BB112\l	}"];
+	BB111 -> BB112
+	BB112[shape=record,label="{BB112:\l\l
+	 %113 = load  %3\l	 %114 = icmp  %113,  3\l	 br %114, BB128, BB115\l	}"];
+	BB112 -> BB115
+	BB112 -> BB128
+	BB115[shape=record,label="{BB115:\l\l
+	 %116 = load  %1\l	 %117 = load  %2\l	 %118 = load  %3\l	 %119 = mul  8,  %118\l	 %120 = add  %117,  %119\l	 %121 = mul  8,  %120\l	 %122 = add  %116,  %121\l	 %123 = sext  %122\l	 %124 = getelementptr  getelementptr inbounds ([13 x [512 x i32]], ptr @p, i64 0, i64 1),  0,  %123\l	 store  1,  %124\l	 br BB125\l	}"];
+	BB115 -> BB125
+	BB125[shape=record,label="{BB125:\l\l
+	 %126 = load  %3\l	 %127 = add  %126,  1\l	 store  %127,  %3\l	 br BB112\l	}"];
+	BB125 -> BB112
+	BB128[shape=record,label="{BB128:\l\l
+	 br BB129\l	}"];
+	BB128 -> BB129
+	BB129[shape=record,label="{BB129:\l\l
+	 %130 = load  %2\l	 %131 = add  %130,  1\l	 store  %131,  %2\l	 br BB108\l	}"];
+	BB129 -> BB108
+	BB132[shape=record,label="{BB132:\l\l
+	 br BB133\l	}"];
+	BB132 -> BB133
+	BB133[shape=record,label="{BB133:\l\l
+	 %134 = load  %1\l	 %135 = add  %134,  1\l	 store  %135,  %1\l	 br BB104\l	}"];
+	BB133 -> BB104
+	BB136[shape=record,label="{BB136:\l\l
+	 store  0,  getelementptr inbounds ([13 x i32], ptr @class, i64 0, i64 1)\l	 store  193,  getelementptr inbounds ([13 x i32], ptr @piecemax, i64 0, i64 1)\l	 store  0,  %1\l	 br BB137\l	}"];
+	BB136 -> BB137
+	BB137[shape=record,label="{BB137:\l\l
+	 %138 = load  %1\l	 %139 = icmp  %138,  0\l	 br %139, BB169, BB140\l	}"];
+	BB137 -> BB140
+	BB137 -> BB169
+	BB140[shape=record,label="{BB140:\l\l
+	 store  0,  %2\l	 br BB141\l	}"];
+	BB140 -> BB141
+	BB141[shape=record,label="{BB141:\l\l
+	 %142 = load  %2\l	 %143 = icmp  %142,  3\l	 br %143, BB165, BB144\l	}"];
+	BB141 -> BB144
+	BB141 -> BB165
+	BB144[shape=record,label="{BB144:\l\l
+	 store  0,  %3\l	 br BB145\l	}"];
+	BB144 -> BB145
+	BB145[shape=record,label="{BB145:\l\l
+	 %146 = load  %3\l	 %147 = icmp  %146,  1\l	 br %147, BB161, BB148\l	}"];
+	BB145 -> BB148
+	BB145 -> BB161
+	BB148[shape=record,label="{BB148:\l\l
+	 %149 = load  %1\l	 %150 = load  %2\l	 %151 = load  %3\l	 %152 = mul  8,  %151\l	 %153 = add  %150,  %152\l	 %154 = mul  8,  %153\l	 %155 = add  %149,  %154\l	 %156 = sext  %155\l	 %157 = getelementptr  getelementptr inbounds ([13 x [512 x i32]], ptr @p, i64 0, i64 2),  0,  %156\l	 store  1,  %157\l	 br BB158\l	}"];
+	BB148 -> BB158
+	BB158[shape=record,label="{BB158:\l\l
+	 %159 = load  %3\l	 %160 = add  %159,  1\l	 store  %160,  %3\l	 br BB145\l	}"];
+	BB158 -> BB145
+	BB161[shape=record,label="{BB161:\l\l
+	 br BB162\l	}"];
+	BB161 -> BB162
+	BB162[shape=record,label="{BB162:\l\l
+	 %163 = load  %2\l	 %164 = add  %163,  1\l	 store  %164,  %2\l	 br BB141\l	}"];
+	BB162 -> BB141
+	BB165[shape=record,label="{BB165:\l\l
+	 br BB166\l	}"];
+	BB165 -> BB166
+	BB166[shape=record,label="{BB166:\l\l
+	 %167 = load  %1\l	 %168 = add  %167,  1\l	 store  %168,  %1\l	 br BB137\l	}"];
+	BB166 -> BB137
+	BB169[shape=record,label="{BB169:\l\l
+	 store  0,  getelementptr inbounds ([13 x i32], ptr @class, i64 0, i64 2)\l	 store  88,  getelementptr inbounds ([13 x i32], ptr @piecemax, i64 0, i64 2)\l	 store  0,  %1\l	 br BB170\l	}"];
+	BB169 -> BB170
+	BB170[shape=record,label="{BB170:\l\l
+	 %171 = load  %1\l	 %172 = icmp  %171,  1\l	 br %172, BB202, BB173\l	}"];
+	BB170 -> BB173
+	BB170 -> BB202
+	BB173[shape=record,label="{BB173:\l\l
+	 store  0,  %2\l	 br BB174\l	}"];
+	BB173 -> BB174
+	BB174[shape=record,label="{BB174:\l\l
+	 %175 = load  %2\l	 %176 = icmp  %175,  3\l	 br %176, BB198, BB177\l	}"];
+	BB174 -> BB177
+	BB174 -> BB198
+	BB177[shape=record,label="{BB177:\l\l
+	 store  0,  %3\l	 br BB178\l	}"];
+	BB177 -> BB178
+	BB178[shape=record,label="{BB178:\l\l
+	 %179 = load  %3\l	 %180 = icmp  %179,  0\l	 br %180, BB194, BB181\l	}"];
+	BB178 -> BB181
+	BB178 -> BB194
+	BB181[shape=record,label="{BB181:\l\l
+	 %182 = load  %1\l	 %183 = load  %2\l	 %184 = load  %3\l	 %185 = mul  8,  %184\l	 %186 = add  %183,  %185\l	 %187 = mul  8,  %186\l	 %188 = add  %182,  %187\l	 %189 = sext  %188\l	 %190 = getelementptr  getelementptr inbounds ([13 x [512 x i32]], ptr @p, i64 0, i64 3),  0,  %189\l	 store  1,  %190\l	 br BB191\l	}"];
+	BB181 -> BB191
+	BB191[shape=record,label="{BB191:\l\l
+	 %192 = load  %3\l	 %193 = add  %192,  1\l	 store  %193,  %3\l	 br BB178\l	}"];
+	BB191 -> BB178
+	BB194[shape=record,label="{BB194:\l\l
+	 br BB195\l	}"];
+	BB194 -> BB195
+	BB195[shape=record,label="{BB195:\l\l
+	 %196 = load  %2\l	 %197 = add  %196,  1\l	 store  %197,  %2\l	 br BB174\l	}"];
+	BB195 -> BB174
+	BB198[shape=record,label="{BB198:\l\l
+	 br BB199\l	}"];
+	BB198 -> BB199
+	BB199[shape=record,label="{BB199:\l\l
+	 %200 = load  %1\l	 %201 = add  %200,  1\l	 store  %201,  %1\l	 br BB170\l	}"];
+	BB199 -> BB170
+	BB202[shape=record,label="{BB202:\l\l
+	 store  0,  getelementptr inbounds ([13 x i32], ptr @class, i64 0, i64 3)\l	 store  25,  getelementptr inbounds ([13 x i32], ptr @piecemax, i64 0, i64 3)\l	 store  0,  %1\l	 br BB203\l	}"];
+	BB202 -> BB203
+	BB203[shape=record,label="{BB203:\l\l
+	 %204 = load  %1\l	 %205 = icmp  %204,  3\l	 br %205, BB235, BB206\l	}"];
+	BB203 -> BB206
+	BB203 -> BB235
+	BB206[shape=record,label="{BB206:\l\l
+	 store  0,  %2\l	 br BB207\l	}"];
+	BB206 -> BB207
+	BB207[shape=record,label="{BB207:\l\l
+	 %208 = load  %2\l	 %209 = icmp  %208,  0\l	 br %209, BB231, BB210\l	}"];
+	BB207 -> BB210
+	BB207 -> BB231
+	BB210[shape=record,label="{BB210:\l\l
+	 store  0,  %3\l	 br BB211\l	}"];
+	BB210 -> BB211
+	BB211[shape=record,label="{BB211:\l\l
+	 %212 = load  %3\l	 %213 = icmp  %212,  1\l	 br %213, BB227, BB214\l	}"];
+	BB211 -> BB214
+	BB211 -> BB227
+	BB214[shape=record,label="{BB214:\l\l
+	 %215 = load  %1\l	 %216 = load  %2\l	 %217 = load  %3\l	 %218 = mul  8,  %217\l	 %219 = add  %216,  %218\l	 %220 = mul  8,  %219\l	 %221 = add  %215,  %220\l	 %222 = sext  %221\l	 %223 = getelementptr  getelementptr inbounds ([13 x [512 x i32]], ptr @p, i64 0, i64 4),  0,  %222\l	 store  1,  %223\l	 br BB224\l	}"];
+	BB214 -> BB224
+	BB224[shape=record,label="{BB224:\l\l
+	 %225 = load  %3\l	 %226 = add  %225,  1\l	 store  %226,  %3\l	 br BB211\l	}"];
+	BB224 -> BB211
+	BB227[shape=record,label="{BB227:\l\l
+	 br BB228\l	}"];
+	BB227 -> BB228
+	BB228[shape=record,label="{BB228:\l\l
+	 %229 = load  %2\l	 %230 = add  %229,  1\l	 store  %230,  %2\l	 br BB207\l	}"];
+	BB228 -> BB207
+	BB231[shape=record,label="{BB231:\l\l
+	 br BB232\l	}"];
+	BB231 -> BB232
+	BB232[shape=record,label="{BB232:\l\l
+	 %233 = load  %1\l	 %234 = add  %233,  1\l	 store  %234,  %1\l	 br BB203\l	}"];
+	BB232 -> BB203
+	BB235[shape=record,label="{BB235:\l\l
+	 store  0,  getelementptr inbounds ([13 x i32], ptr @class, i64 0, i64 4)\l	 store  67,  getelementptr inbounds ([13 x i32], ptr @piecemax, i64 0, i64 4)\l	 store  0,  %1\l	 br BB236\l	}"];
+	BB235 -> BB236
+	BB236[shape=record,label="{BB236:\l\l
+	 %237 = load  %1\l	 %238 = icmp  %237,  0\l	 br %238, BB268, BB239\l	}"];
+	BB236 -> BB239
+	BB236 -> BB268
+	BB239[shape=record,label="{BB239:\l\l
+	 store  0,  %2\l	 br BB240\l	}"];
+	BB239 -> BB240
+	BB240[shape=record,label="{BB240:\l\l
+	 %241 = load  %2\l	 %242 = icmp  %241,  1\l	 br %242, BB264, BB243\l	}"];
+	BB240 -> BB243
+	BB240 -> BB264
+	BB243[shape=record,label="{BB243:\l\l
+	 store  0,  %3\l	 br BB244\l	}"];
+	BB243 -> BB244
+	BB244[shape=record,label="{BB244:\l\l
+	 %245 = load  %3\l	 %246 = icmp  %245,  3\l	 br %246, BB260, BB247\l	}"];
+	BB244 -> BB247
+	BB244 -> BB260
+	BB247[shape=record,label="{BB247:\l\l
+	 %248 = load  %1\l	 %249 = load  %2\l	 %250 = load  %3\l	 %251 = mul  8,  %250\l	 %252 = add  %249,  %251\l	 %253 = mul  8,  %252\l	 %254 = add  %248,  %253\l	 %255 = sext  %254\l	 %256 = getelementptr  getelementptr inbounds ([13 x [512 x i32]], ptr @p, i64 0, i64 5),  0,  %255\l	 store  1,  %256\l	 br BB257\l	}"];
+	BB247 -> BB257
+	BB257[shape=record,label="{BB257:\l\l
+	 %258 = load  %3\l	 %259 = add  %258,  1\l	 store  %259,  %3\l	 br BB244\l	}"];
+	BB257 -> BB244
+	BB260[shape=record,label="{BB260:\l\l
+	 br BB261\l	}"];
+	BB260 -> BB261
+	BB261[shape=record,label="{BB261:\l\l
+	 %262 = load  %2\l	 %263 = add  %262,  1\l	 store  %263,  %2\l	 br BB240\l	}"];
+	BB261 -> BB240
+	BB264[shape=record,label="{BB264:\l\l
+	 br BB265\l	}"];
+	BB264 -> BB265
+	BB265[shape=record,label="{BB265:\l\l
+	 %266 = load  %1\l	 %267 = add  %266,  1\l	 store  %267,  %1\l	 br BB236\l	}"];
+	BB265 -> BB236
+	BB268[shape=record,label="{BB268:\l\l
+	 store  0,  getelementptr inbounds ([13 x i32], ptr @class, i64 0, i64 5)\l	 store  200,  getelementptr inbounds ([13 x i32], ptr @piecemax, i64 0, i64 5)\l	 store  0,  %1\l	 br BB269\l	}"];
+	BB268 -> BB269
+	BB269[shape=record,label="{BB269:\l\l
+	 %270 = load  %1\l	 %271 = icmp  %270,  2\l	 br %271, BB301, BB272\l	}"];
+	BB269 -> BB272
+	BB269 -> BB301
+	BB272[shape=record,label="{BB272:\l\l
+	 store  0,  %2\l	 br BB273\l	}"];
+	BB272 -> BB273
+	BB273[shape=record,label="{BB273:\l\l
+	 %274 = load  %2\l	 %275 = icmp  %274,  0\l	 br %275, BB297, BB276\l	}"];
+	BB273 -> BB276
+	BB273 -> BB297
+	BB276[shape=record,label="{BB276:\l\l
+	 store  0,  %3\l	 br BB277\l	}"];
+	BB276 -> BB277
+	BB277[shape=record,label="{BB277:\l\l
+	 %278 = load  %3\l	 %279 = icmp  %278,  0\l	 br %279, BB293, BB280\l	}"];
+	BB277 -> BB280
+	BB277 -> BB293
+	BB280[shape=record,label="{BB280:\l\l
+	 %281 = load  %1\l	 %282 = load  %2\l	 %283 = load  %3\l	 %284 = mul  8,  %283\l	 %285 = add  %282,  %284\l	 %286 = mul  8,  %285\l	 %287 = add  %281,  %286\l	 %288 = sext  %287\l	 %289 = getelementptr  getelementptr inbounds ([13 x [512 x i32]], ptr @p, i64 0, i64 6),  0,  %288\l	 store  1,  %289\l	 br BB290\l	}"];
+	BB280 -> BB290
+	BB290[shape=record,label="{BB290:\l\l
+	 %291 = load  %3\l	 %292 = add  %291,  1\l	 store  %292,  %3\l	 br BB277\l	}"];
+	BB290 -> BB277
+	BB293[shape=record,label="{BB293:\l\l
+	 br BB294\l	}"];
+	BB293 -> BB294
+	BB294[shape=record,label="{BB294:\l\l
+	 %295 = load  %2\l	 %296 = add  %295,  1\l	 store  %296,  %2\l	 br BB273\l	}"];
+	BB294 -> BB273
+	BB297[shape=record,label="{BB297:\l\l
+	 br BB298\l	}"];
+	BB297 -> BB298
+	BB298[shape=record,label="{BB298:\l\l
+	 %299 = load  %1\l	 %300 = add  %299,  1\l	 store  %300,  %1\l	 br BB269\l	}"];
+	BB298 -> BB269
+	BB301[shape=record,label="{BB301:\l\l
+	 store  1,  getelementptr inbounds ([13 x i32], ptr @class, i64 0, i64 6)\l	 store  2,  getelementptr inbounds ([13 x i32], ptr @piecemax, i64 0, i64 6)\l	 store  0,  %1\l	 br BB302\l	}"];
+	BB301 -> BB302
+	BB302[shape=record,label="{BB302:\l\l
+	 %303 = load  %1\l	 %304 = icmp  %303,  0\l	 br %304, BB334, BB305\l	}"];
+	BB302 -> BB305
+	BB302 -> BB334
+	BB305[shape=record,label="{BB305:\l\l
+	 store  0,  %2\l	 br BB306\l	}"];
+	BB305 -> BB306
+	BB306[shape=record,label="{BB306:\l\l
+	 %307 = load  %2\l	 %308 = icmp  %307,  2\l	 br %308, BB330, BB309\l	}"];
+	BB306 -> BB309
+	BB306 -> BB330
+	BB309[shape=record,label="{BB309:\l\l
+	 store  0,  %3\l	 br BB310\l	}"];
+	BB309 -> BB310
+	BB310[shape=record,label="{BB310:\l\l
+	 %311 = load  %3\l	 %312 = icmp  %311,  0\l	 br %312, BB326, BB313\l	}"];
+	BB310 -> BB313
+	BB310 -> BB326
+	BB313[shape=record,label="{BB313:\l\l
+	 %314 = load  %1\l	 %315 = load  %2\l	 %316 = load  %3\l	 %317 = mul  8,  %316\l	 %318 = add  %315,  %317\l	 %319 = mul  8,  %318\l	 %320 = add  %314,  %319\l	 %321 = sext  %320\l	 %322 = getelementptr  getelementptr inbounds ([13 x [512 x i32]], ptr @p, i64 0, i64 7),  0,  %321\l	 store  1,  %322\l	 br BB323\l	}"];
+	BB313 -> BB323
+	BB323[shape=record,label="{BB323:\l\l
+	 %324 = load  %3\l	 %325 = add  %324,  1\l	 store  %325,  %3\l	 br BB310\l	}"];
+	BB323 -> BB310
+	BB326[shape=record,label="{BB326:\l\l
+	 br BB327\l	}"];
+	BB326 -> BB327
+	BB327[shape=record,label="{BB327:\l\l
+	 %328 = load  %2\l	 %329 = add  %328,  1\l	 store  %329,  %2\l	 br BB306\l	}"];
+	BB327 -> BB306
+	BB330[shape=record,label="{BB330:\l\l
+	 br BB331\l	}"];
+	BB330 -> BB331
+	BB331[shape=record,label="{BB331:\l\l
+	 %332 = load  %1\l	 %333 = add  %332,  1\l	 store  %333,  %1\l	 br BB302\l	}"];
+	BB331 -> BB302
+	BB334[shape=record,label="{BB334:\l\l
+	 store  1,  getelementptr inbounds ([13 x i32], ptr @class, i64 0, i64 7)\l	 store  16,  getelementptr inbounds ([13 x i32], ptr @piecemax, i64 0, i64 7)\l	 store  0,  %1\l	 br BB335\l	}"];
+	BB334 -> BB335
+	BB335[shape=record,label="{BB335:\l\l
+	 %336 = load  %1\l	 %337 = icmp  %336,  0\l	 br %337, BB367, BB338\l	}"];
+	BB335 -> BB338
+	BB335 -> BB367
+	BB338[shape=record,label="{BB338:\l\l
+	 store  0,  %2\l	 br BB339\l	}"];
+	BB338 -> BB339
+	BB339[shape=record,label="{BB339:\l\l
+	 %340 = load  %2\l	 %341 = icmp  %340,  0\l	 br %341, BB363, BB342\l	}"];
+	BB339 -> BB342
+	BB339 -> BB363
+	BB342[shape=record,label="{BB342:\l\l
+	 store  0,  %3\l	 br BB343\l	}"];
+	BB342 -> BB343
+	BB343[shape=record,label="{BB343:\l\l
+	 %344 = load  %3\l	 %345 = icmp  %344,  2\l	 br %345, BB359, BB346\l	}"];
+	BB343 -> BB346
+	BB343 -> BB359
+	BB346[shape=record,label="{BB346:\l\l
+	 %347 = load  %1\l	 %348 = load  %2\l	 %349 = load  %3\l	 %350 = mul  8,  %349\l	 %351 = add  %348,  %350\l	 %352 = mul  8,  %351\l	 %353 = add  %347,  %352\l	 %354 = sext  %353\l	 %355 = getelementptr  getelementptr inbounds ([13 x [512 x i32]], ptr @p, i64 0, i64 8),  0,  %354\l	 store  1,  %355\l	 br BB356\l	}"];
+	BB346 -> BB356
+	BB356[shape=record,label="{BB356:\l\l
+	 %357 = load  %3\l	 %358 = add  %357,  1\l	 store  %358,  %3\l	 br BB343\l	}"];
+	BB356 -> BB343
+	BB359[shape=record,label="{BB359:\l\l
+	 br BB360\l	}"];
+	BB359 -> BB360
+	BB360[shape=record,label="{BB360:\l\l
+	 %361 = load  %2\l	 %362 = add  %361,  1\l	 store  %362,  %2\l	 br BB339\l	}"];
+	BB360 -> BB339
+	BB363[shape=record,label="{BB363:\l\l
+	 br BB364\l	}"];
+	BB363 -> BB364
+	BB364[shape=record,label="{BB364:\l\l
+	 %365 = load  %1\l	 %366 = add  %365,  1\l	 store  %366,  %1\l	 br BB335\l	}"];
+	BB364 -> BB335
+	BB367[shape=record,label="{BB367:\l\l
+	 store  1,  getelementptr inbounds ([13 x i32], ptr @class, i64 0, i64 8)\l	 store  128,  getelementptr inbounds ([13 x i32], ptr @piecemax, i64 0, i64 8)\l	 store  0,  %1\l	 br BB368\l	}"];
+	BB367 -> BB368
+	BB368[shape=record,label="{BB368:\l\l
+	 %369 = load  %1\l	 %370 = icmp  %369,  1\l	 br %370, BB400, BB371\l	}"];
+	BB368 -> BB371
+	BB368 -> BB400
+	BB371[shape=record,label="{BB371:\l\l
+	 store  0,  %2\l	 br BB372\l	}"];
+	BB371 -> BB372
+	BB372[shape=record,label="{BB372:\l\l
+	 %373 = load  %2\l	 %374 = icmp  %373,  1\l	 br %374, BB396, BB375\l	}"];
+	BB372 -> BB375
+	BB372 -> BB396
+	BB375[shape=record,label="{BB375:\l\l
+	 store  0,  %3\l	 br BB376\l	}"];
+	BB375 -> BB376
+	BB376[shape=record,label="{BB376:\l\l
+	 %377 = load  %3\l	 %378 = icmp  %377,  0\l	 br %378, BB392, BB379\l	}"];
+	BB376 -> BB379
+	BB376 -> BB392
+	BB379[shape=record,label="{BB379:\l\l
+	 %380 = load  %1\l	 %381 = load  %2\l	 %382 = load  %3\l	 %383 = mul  8,  %382\l	 %384 = add  %381,  %383\l	 %385 = mul  8,  %384\l	 %386 = add  %380,  %385\l	 %387 = sext  %386\l	 %388 = getelementptr  getelementptr inbounds ([13 x [512 x i32]], ptr @p, i64 0, i64 9),  0,  %387\l	 store  1,  %388\l	 br BB389\l	}"];
+	BB379 -> BB389
+	BB389[shape=record,label="{BB389:\l\l
+	 %390 = load  %3\l	 %391 = add  %390,  1\l	 store  %391,  %3\l	 br BB376\l	}"];
+	BB389 -> BB376
+	BB392[shape=record,label="{BB392:\l\l
+	 br BB393\l	}"];
+	BB392 -> BB393
+	BB393[shape=record,label="{BB393:\l\l
+	 %394 = load  %2\l	 %395 = add  %394,  1\l	 store  %395,  %2\l	 br BB372\l	}"];
+	BB393 -> BB372
+	BB396[shape=record,label="{BB396:\l\l
+	 br BB397\l	}"];
+	BB396 -> BB397
+	BB397[shape=record,label="{BB397:\l\l
+	 %398 = load  %1\l	 %399 = add  %398,  1\l	 store  %399,  %1\l	 br BB368\l	}"];
+	BB397 -> BB368
+	BB400[shape=record,label="{BB400:\l\l
+	 store  2,  getelementptr inbounds ([13 x i32], ptr @class, i64 0, i64 9)\l	 store  9,  getelementptr inbounds ([13 x i32], ptr @piecemax, i64 0, i64 9)\l	 store  0,  %1\l	 br BB401\l	}"];
+	BB400 -> BB401
+	BB401[shape=record,label="{BB401:\l\l
+	 %402 = load  %1\l	 %403 = icmp  %402,  1\l	 br %403, BB433, BB404\l	}"];
+	BB401 -> BB404
+	BB401 -> BB433
+	BB404[shape=record,label="{BB404:\l\l
+	 store  0,  %2\l	 br BB405\l	}"];
+	BB404 -> BB405
+	BB405[shape=record,label="{BB405:\l\l
+	 %406 = load  %2\l	 %407 = icmp  %406,  0\l	 br %407, BB429, BB408\l	}"];
+	BB405 -> BB408
+	BB405 -> BB429
+	BB408[shape=record,label="{BB408:\l\l
+	 store  0,  %3\l	 br BB409\l	}"];
+	BB408 -> BB409
+	BB409[shape=record,label="{BB409:\l\l
+	 %410 = load  %3\l	 %411 = icmp  %410,  1\l	 br %411, BB425, BB412\l	}"];
+	BB409 -> BB412
+	BB409 -> BB425
+	BB412[shape=record,label="{BB412:\l\l
+	 %413 = load  %1\l	 %414 = load  %2\l	 %415 = load  %3\l	 %416 = mul  8,  %415\l	 %417 = add  %414,  %416\l	 %418 = mul  8,  %417\l	 %419 = add  %413,  %418\l	 %420 = sext  %419\l	 %421 = getelementptr  getelementptr inbounds ([13 x [512 x i32]], ptr @p, i64 0, i64 10),  0,  %420\l	 store  1,  %421\l	 br BB422\l	}"];
+	BB412 -> BB422
+	BB422[shape=record,label="{BB422:\l\l
+	 %423 = load  %3\l	 %424 = add  %423,  1\l	 store  %424,  %3\l	 br BB409\l	}"];
+	BB422 -> BB409
+	BB425[shape=record,label="{BB425:\l\l
+	 br BB426\l	}"];
+	BB425 -> BB426
+	BB426[shape=record,label="{BB426:\l\l
+	 %427 = load  %2\l	 %428 = add  %427,  1\l	 store  %428,  %2\l	 br BB405\l	}"];
+	BB426 -> BB405
+	BB429[shape=record,label="{BB429:\l\l
+	 br BB430\l	}"];
+	BB429 -> BB430
+	BB430[shape=record,label="{BB430:\l\l
+	 %431 = load  %1\l	 %432 = add  %431,  1\l	 store  %432,  %1\l	 br BB401\l	}"];
+	BB430 -> BB401
+	BB433[shape=record,label="{BB433:\l\l
+	 store  2,  getelementptr inbounds ([13 x i32], ptr @class, i64 0, i64 10)\l	 store  65,  getelementptr inbounds ([13 x i32], ptr @piecemax, i64 0, i64 10)\l	 store  0,  %1\l	 br BB434\l	}"];
+	BB433 -> BB434
+	BB434[shape=record,label="{BB434:\l\l
+	 %435 = load  %1\l	 %436 = icmp  %435,  0\l	 br %436, BB466, BB437\l	}"];
+	BB434 -> BB437
+	BB434 -> BB466
+	BB437[shape=record,label="{BB437:\l\l
+	 store  0,  %2\l	 br BB438\l	}"];
+	BB437 -> BB438
+	BB438[shape=record,label="{BB438:\l\l
+	 %439 = load  %2\l	 %440 = icmp  %439,  1\l	 br %440, BB462, BB441\l	}"];
+	BB438 -> BB441
+	BB438 -> BB462
+	BB441[shape=record,label="{BB441:\l\l
+	 store  0,  %3\l	 br BB442\l	}"];
+	BB441 -> BB442
+	BB442[shape=record,label="{BB442:\l\l
+	 %443 = load  %3\l	 %444 = icmp  %443,  1\l	 br %444, BB458, BB445\l	}"];
+	BB442 -> BB445
+	BB442 -> BB458
+	BB445[shape=record,label="{BB445:\l\l
+	 %446 = load  %1\l	 %447 = load  %2\l	 %448 = load  %3\l	 %449 = mul  8,  %448\l	 %450 = add  %447,  %449\l	 %451 = mul  8,  %450\l	 %452 = add  %446,  %451\l	 %453 = sext  %452\l	 %454 = getelementptr  getelementptr inbounds ([13 x [512 x i32]], ptr @p, i64 0, i64 11),  0,  %453\l	 store  1,  %454\l	 br BB455\l	}"];
+	BB445 -> BB455
+	BB455[shape=record,label="{BB455:\l\l
+	 %456 = load  %3\l	 %457 = add  %456,  1\l	 store  %457,  %3\l	 br BB442\l	}"];
+	BB455 -> BB442
+	BB458[shape=record,label="{BB458:\l\l
+	 br BB459\l	}"];
+	BB458 -> BB459
+	BB459[shape=record,label="{BB459:\l\l
+	 %460 = load  %2\l	 %461 = add  %460,  1\l	 store  %461,  %2\l	 br BB438\l	}"];
+	BB459 -> BB438
+	BB462[shape=record,label="{BB462:\l\l
+	 br BB463\l	}"];
+	BB462 -> BB463
+	BB463[shape=record,label="{BB463:\l\l
+	 %464 = load  %1\l	 %465 = add  %464,  1\l	 store  %465,  %1\l	 br BB434\l	}"];
+	BB463 -> BB434
+	BB466[shape=record,label="{BB466:\l\l
+	 store  2,  getelementptr inbounds ([13 x i32], ptr @class, i64 0, i64 11)\l	 store  72,  getelementptr inbounds ([13 x i32], ptr @piecemax, i64 0, i64 11)\l	 store  0,  %1\l	 br BB467\l	}"];
+	BB466 -> BB467
+	BB467[shape=record,label="{BB467:\l\l
+	 %468 = load  %1\l	 %469 = icmp  %468,  1\l	 br %469, BB499, BB470\l	}"];
+	BB467 -> BB470
+	BB467 -> BB499
+	BB470[shape=record,label="{BB470:\l\l
+	 store  0,  %2\l	 br BB471\l	}"];
+	BB470 -> BB471
+	BB471[shape=record,label="{BB471:\l\l
+	 %472 = load  %2\l	 %473 = icmp  %472,  1\l	 br %473, BB495, BB474\l	}"];
+	BB471 -> BB474
+	BB471 -> BB495
+	BB474[shape=record,label="{BB474:\l\l
+	 store  0,  %3\l	 br BB475\l	}"];
+	BB474 -> BB475
+	BB475[shape=record,label="{BB475:\l\l
+	 %476 = load  %3\l	 %477 = icmp  %476,  1\l	 br %477, BB491, BB478\l	}"];
+	BB475 -> BB478
+	BB475 -> BB491
+	BB478[shape=record,label="{BB478:\l\l
+	 %479 = load  %1\l	 %480 = load  %2\l	 %481 = load  %3\l	 %482 = mul  8,  %481\l	 %483 = add  %480,  %482\l	 %484 = mul  8,  %483\l	 %485 = add  %479,  %484\l	 %486 = sext  %485\l	 %487 = getelementptr  getelementptr inbounds ([13 x [512 x i32]], ptr @p, i64 0, i64 12),  0,  %486\l	 store  1,  %487\l	 br BB488\l	}"];
+	BB478 -> BB488
+	BB488[shape=record,label="{BB488:\l\l
+	 %489 = load  %3\l	 %490 = add  %489,  1\l	 store  %490,  %3\l	 br BB475\l	}"];
+	BB488 -> BB475
+	BB491[shape=record,label="{BB491:\l\l
+	 br BB492\l	}"];
+	BB491 -> BB492
+	BB492[shape=record,label="{BB492:\l\l
+	 %493 = load  %2\l	 %494 = add  %493,  1\l	 store  %494,  %2\l	 br BB471\l	}"];
+	BB492 -> BB471
+	BB495[shape=record,label="{BB495:\l\l
+	 br BB496\l	}"];
+	BB495 -> BB496
+	BB496[shape=record,label="{BB496:\l\l
+	 %497 = load  %1\l	 %498 = add  %497,  1\l	 store  %498,  %1\l	 br BB467\l	}"];
+	BB496 -> BB467
+	BB499[shape=record,label="{BB499:\l\l
+	 store  3,  getelementptr inbounds ([13 x i32], ptr @class, i64 0, i64 12)\l	 store  73,  getelementptr inbounds ([13 x i32], ptr @piecemax, i64 0, i64 12)\l	 store  13,  piececount\l	 store  3,  getelementptr inbounds ([4 x i32], ptr @piececount, i64 0, i64 1)\l	 store  1,  getelementptr inbounds ([4 x i32], ptr @piececount, i64 0, i64 2)\l	 store  1,  getelementptr inbounds ([4 x i32], ptr @piececount, i64 0, i64 3)\l	 store  73,  %4\l	 store  0,  kount\l	 %500 = load  %4\l	 %501 = call Fit(0, %500)\l	 %502 = icmp  %501,  0\l	 br %502, BB506, BB503\l	}"];
+	BB499 -> BB503
+	BB499 -> BB506
+	BB503[shape=record,label="{BB503:\l\l
+	 %504 = load  %4\l	 %505 = call Place(0, %504)\l	 store  %505,  n\l	 br BB508\l	}"];
+	BB503 -> BB508
+	BB506[shape=record,label="{BB506:\l\l
+	 %507 = call printf(.str)\l	 br BB508\l	}"];
+	BB506 -> BB508
+	BB508[shape=record,label="{BB508:\l\l
+	 %509 = load  n\l	 %510 = call Trial(%509)\l	 %511 = icmp  %510,  0\l	 br %511, BB512, BB514\l	}"];
+	BB508 -> BB514
+	BB508 -> BB512
+	BB512[shape=record,label="{BB512:\l\l
+	 %513 = call printf(.str.1)\l	 br BB520\l	}"];
+	BB512 -> BB520
+	BB514[shape=record,label="{BB514:\l\l
+	 %515 = load  kount\l	 %516 = icmp  %515,  2005\l	 br %516, BB519, BB517\l	}"];
+	BB514 -> BB517
+	BB514 -> BB519
+	BB517[shape=record,label="{BB517:\l\l
+	 %518 = call printf(.str.2)\l	 br BB519\l	}"];
+	BB517 -> BB519
+	BB519[shape=record,label="{BB519:\l\l
+	 br BB520\l	}"];
+	BB519 -> BB520
+	BB520[shape=record,label="{BB520:\l\l
+	 %521 = load  n\l	 %522 = call printf(.str.3, %521)\l	 %523 = load  kount\l	 %524 = call printf(.str.3, %523)\l	 call llvm.lifetime.end.p0(4, %4)\l	 call llvm.lifetime.end.p0(4, %3)\l	 call llvm.lifetime.end.p0(4, %2)\l	 call llvm.lifetime.end.p0(4, %1)\l	 ret \l	}"];
+}

@@ -1,0 +1,41 @@
+digraph "CFG of Insert function"{
+	BB2[shape=record,label="{BB2:\l\l
+	 %3 = alloca  1\l	 %4 = alloca  1\l	 store  %0,  %3\l	 store  %1,  %4\l	 %5 = load  %3\l	 %6 = load  %4\l	 %7 = getelementptr  %6,  0,  2\l	 %8 = load  %7\l	 %9 = icmp  %5,  %8\l	 br %9, BB25, BB10\l	}"];
+	BB2 -> BB10
+	BB2 -> BB25
+	BB10[shape=record,label="{BB10:\l\l
+	 %11 = load  %4\l	 %12 = getelementptr  %11,  0,  0\l	 %13 = load  %12\l	 %14 = icmp  %13,  null\l	 br %14, BB19, BB15\l	}"];
+	BB10 -> BB15
+	BB10 -> BB19
+	BB15[shape=record,label="{BB15:\l\l
+	 %16 = load  %4\l	 %17 = getelementptr  %16,  0,  0\l	 %18 = load  %3\l	 call CreateNode(%17, %18)\l	 br BB24\l	}"];
+	BB15 -> BB24
+	BB19[shape=record,label="{BB19:\l\l
+	 %20 = load  %3\l	 %21 = load  %4\l	 %22 = getelementptr  %21,  0,  0\l	 %23 = load  %22\l	 call Insert(%20, %23)\l	 br BB24\l	}"];
+	BB19 -> BB24
+	BB24[shape=record,label="{BB24:\l\l
+	 br BB47\l	}"];
+	BB24 -> BB47
+	BB25[shape=record,label="{BB25:\l\l
+	 %26 = load  %3\l	 %27 = load  %4\l	 %28 = getelementptr  %27,  0,  2\l	 %29 = load  %28\l	 %30 = icmp  %26,  %29\l	 br %30, BB46, BB31\l	}"];
+	BB25 -> BB31
+	BB25 -> BB46
+	BB31[shape=record,label="{BB31:\l\l
+	 %32 = load  %4\l	 %33 = getelementptr  %32,  0,  1\l	 %34 = load  %33\l	 %35 = icmp  %34,  null\l	 br %35, BB40, BB36\l	}"];
+	BB31 -> BB36
+	BB31 -> BB40
+	BB36[shape=record,label="{BB36:\l\l
+	 %37 = load  %4\l	 %38 = getelementptr  %37,  0,  1\l	 %39 = load  %3\l	 call CreateNode(%38, %39)\l	 br BB45\l	}"];
+	BB36 -> BB45
+	BB40[shape=record,label="{BB40:\l\l
+	 %41 = load  %3\l	 %42 = load  %4\l	 %43 = getelementptr  %42,  0,  1\l	 %44 = load  %43\l	 call Insert(%41, %44)\l	 br BB45\l	}"];
+	BB40 -> BB45
+	BB45[shape=record,label="{BB45:\l\l
+	 br BB46\l	}"];
+	BB45 -> BB46
+	BB46[shape=record,label="{BB46:\l\l
+	 br BB47\l	}"];
+	BB46 -> BB47
+	BB47[shape=record,label="{BB47:\l\l
+	 ret \l	}"];
+}

@@ -1,0 +1,14 @@
+digraph "CFG of Printcomplex function"{
+	BB4[shape=record,label="{BB4:\l\l
+	 %5 = alloca  1\l	 %6 = alloca  1\l	 %7 = alloca  1\l	 %8 = alloca  1\l	 %9 = alloca  1\l	 store  %0,  %5\l	 store  %1,  %6\l	 store  %2,  %7\l	 store  %3,  %8\l	 call llvm.lifetime.start.p0(4, %9)\l	 %10 = call printf(.str)\l	 %11 = load  %6\l	 store  %11,  %9\l	 br BB12\l	}"];
+	BB4 -> BB12
+	BB12[shape=record,label="{BB12:\l\l
+	 %13 = load  %5\l	 %14 = load  %9\l	 %15 = sext  %14\l	 %16 = getelementptr  %13,  %15\l	 %17 = getelementptr  %16,  0,  0\l	 %18 = load  %17\l	 %19 = fpext  %18\l	 %20 = load  %5\l	 %21 = load  %9\l	 %22 = sext  %21\l	 %23 = getelementptr  %20,  %22\l	 %24 = getelementptr  %23,  0,  1\l	 %25 = load  %24\l	 %26 = fpext  %25\l	 %27 = call printf(.str.1, %19, %26)\l	 %28 = load  %9\l	 %29 = load  %8\l	 %30 = add  %28,  %29\l	 store  %30,  %9\l	 %31 = load  %5\l	 %32 = load  %9\l	 %33 = sext  %32\l	 %34 = getelementptr  %31,  %33\l	 %35 = getelementptr  %34,  0,  0\l	 %36 = load  %35\l	 %37 = fpext  %36\l	 %38 = load  %5\l	 %39 = load  %9\l	 %40 = sext  %39\l	 %41 = getelementptr  %38,  %40\l	 %42 = getelementptr  %41,  0,  1\l	 %43 = load  %42\l	 %44 = fpext  %43\l	 %45 = call printf(.str.1, %37, %44)\l	 %46 = call printf(.str)\l	 %47 = load  %9\l	 %48 = load  %8\l	 %49 = add  %47,  %48\l	 store  %49,  %9\l	 br BB50\l	}"];
+	BB12 -> BB50
+	BB50[shape=record,label="{BB50:\l\l
+	 %51 = load  %9\l	 %52 = load  %7\l	 %53 = icmp  %51,  %52\l	 br %53, BB54, BB12\l	}"];
+	BB50 -> BB12
+	BB50 -> BB54
+	BB54[shape=record,label="{BB54:\l\l
+	 call llvm.lifetime.end.p0(4, %9)\l	 ret \l	}"];
+}

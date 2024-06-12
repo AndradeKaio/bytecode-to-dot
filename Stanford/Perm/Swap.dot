@@ -1,0 +1,4 @@
+digraph "CFG of Swap function"{
+	BB2[shape=record,label="{BB2:\l\l
+	 %3 = alloca  1\l	 %4 = alloca  1\l	 %5 = alloca  1\l	 store  %0,  %3\l	 store  %1,  %4\l	 call llvm.lifetime.start.p0(4, %5)\l	 %6 = load  %3\l	 %7 = load  %6\l	 store  %7,  %5\l	 %8 = load  %4\l	 %9 = load  %8\l	 %10 = load  %3\l	 store  %9,  %10\l	 %11 = load  %5\l	 %12 = load  %4\l	 store  %11,  %12\l	 call llvm.lifetime.end.p0(4, %5)\l	 ret \l	}"];
+}

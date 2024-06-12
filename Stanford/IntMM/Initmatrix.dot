@@ -1,0 +1,30 @@
+digraph "CFG of Initmatrix function"{
+	BB1[shape=record,label="{BB1:\l\l
+	 %2 = alloca  1\l	 %3 = alloca  1\l	 %4 = alloca  1\l	 %5 = alloca  1\l	 store  %0,  %2\l	 call llvm.lifetime.start.p0(4, %3)\l	 call llvm.lifetime.start.p0(4, %4)\l	 call llvm.lifetime.start.p0(4, %5)\l	 store  1,  %4\l	 br BB6\l	}"];
+	BB1 -> BB6
+	BB6[shape=record,label="{BB6:\l\l
+	 %7 = load  %4\l	 %8 = icmp  %7,  40\l	 br %8, BB35, BB9\l	}"];
+	BB6 -> BB9
+	BB6 -> BB35
+	BB9[shape=record,label="{BB9:\l\l
+	 store  1,  %5\l	 br BB10\l	}"];
+	BB9 -> BB10
+	BB10[shape=record,label="{BB10:\l\l
+	 %11 = load  %5\l	 %12 = icmp  %11,  40\l	 br %12, BB31, BB13\l	}"];
+	BB10 -> BB13
+	BB10 -> BB31
+	BB13[shape=record,label="{BB13:\l\l
+	 %14 = call Rand()\l	 store  %14,  %3\l	 %15 = load  %3\l	 %16 = load  %3\l	 %17 = sdiv  %16,  120\l	 %18 = mul  %17,  120\l	 %19 = sub  %15,  %18\l	 %20 = sub  %19,  60\l	 %21 = load  %2\l	 %22 = load  %4\l	 %23 = sext  %22\l	 %24 = getelementptr  %21,  %23\l	 %25 = load  %5\l	 %26 = sext  %25\l	 %27 = getelementptr  %24,  0,  %26\l	 store  %20,  %27\l	 br BB28\l	}"];
+	BB13 -> BB28
+	BB28[shape=record,label="{BB28:\l\l
+	 %29 = load  %5\l	 %30 = add  %29,  1\l	 store  %30,  %5\l	 br BB10\l	}"];
+	BB28 -> BB10
+	BB31[shape=record,label="{BB31:\l\l
+	 br BB32\l	}"];
+	BB31 -> BB32
+	BB32[shape=record,label="{BB32:\l\l
+	 %33 = load  %4\l	 %34 = add  %33,  1\l	 store  %34,  %4\l	 br BB6\l	}"];
+	BB32 -> BB6
+	BB35[shape=record,label="{BB35:\l\l
+	 call llvm.lifetime.end.p0(4, %5)\l	 call llvm.lifetime.end.p0(4, %4)\l	 call llvm.lifetime.end.p0(4, %3)\l	 ret \l	}"];
+}

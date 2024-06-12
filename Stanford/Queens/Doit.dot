@@ -1,0 +1,46 @@
+digraph "CFG of Doit function"{
+	BB0[shape=record,label="{BB0:\l\l
+	 %1 = alloca  1\l	 %2 = alloca  1\l	 %3 = alloca  1\l	 %4 = alloca  1\l	 %5 = alloca  1\l	 %6 = alloca  1\l	 call llvm.lifetime.start.p0(4, %1)\l	 call llvm.lifetime.start.p0(4, %2)\l	 call llvm.lifetime.start.p0(36, %3)\l	 call llvm.lifetime.start.p0(68, %4)\l	 call llvm.lifetime.start.p0(60, %5)\l	 call llvm.lifetime.start.p0(36, %6)\l	 store  -7,  %1\l	 br BB7\l	}"];
+	BB0 -> BB7
+	BB7[shape=record,label="{BB7:\l\l
+	 %8 = load  %1\l	 %9 = icmp  %8,  16\l	 br %9, BB38, BB10\l	}"];
+	BB7 -> BB10
+	BB7 -> BB38
+	BB10[shape=record,label="{BB10:\l\l
+	 %11 = load  %1\l	 %12 = icmp  %11,  1\l	 br %12, BB20, BB13\l	}"];
+	BB10 -> BB13
+	BB10 -> BB20
+	BB13[shape=record,label="{BB13:\l\l
+	 %14 = load  %1\l	 %15 = icmp  %14,  8\l	 br %15, BB20, BB16\l	}"];
+	BB13 -> BB16
+	BB13 -> BB20
+	BB16[shape=record,label="{BB16:\l\l
+	 %17 = load  %1\l	 %18 = sext  %17\l	 %19 = getelementptr  %3,  0,  %18\l	 store  1,  %19\l	 br BB20\l	}"];
+	BB16 -> BB20
+	BB20[shape=record,label="{BB20:\l\l
+	 %21 = load  %1\l	 %22 = icmp  %21,  2\l	 br %22, BB27, BB23\l	}"];
+	BB20 -> BB23
+	BB20 -> BB27
+	BB23[shape=record,label="{BB23:\l\l
+	 %24 = load  %1\l	 %25 = sext  %24\l	 %26 = getelementptr  %4,  0,  %25\l	 store  1,  %26\l	 br BB27\l	}"];
+	BB23 -> BB27
+	BB27[shape=record,label="{BB27:\l\l
+	 %28 = load  %1\l	 %29 = icmp  %28,  7\l	 br %29, BB35, BB30\l	}"];
+	BB27 -> BB30
+	BB27 -> BB35
+	BB30[shape=record,label="{BB30:\l\l
+	 %31 = load  %1\l	 %32 = add  %31,  7\l	 %33 = sext  %32\l	 %34 = getelementptr  %5,  0,  %33\l	 store  1,  %34\l	 br BB35\l	}"];
+	BB30 -> BB35
+	BB35[shape=record,label="{BB35:\l\l
+	 %36 = load  %1\l	 %37 = add  %36,  1\l	 store  %37,  %1\l	 br BB7\l	}"];
+	BB35 -> BB7
+	BB38[shape=record,label="{BB38:\l\l
+	 %39 = getelementptr  %4,  0,  0\l	 %40 = getelementptr  %3,  0,  0\l	 %41 = getelementptr  %5,  0,  0\l	 %42 = getelementptr  %6,  0,  0\l	 call Try(1, %2, %39, %40, %41, %42)\l	 %43 = load  %2\l	 %44 = icmp  %43,  0\l	 br %44, BB45, BB47\l	}"];
+	BB38 -> BB47
+	BB38 -> BB45
+	BB45[shape=record,label="{BB45:\l\l
+	 %46 = call printf(.str)\l	 br BB47\l	}"];
+	BB45 -> BB47
+	BB47[shape=record,label="{BB47:\l\l
+	 call llvm.lifetime.end.p0(36, %6)\l	 call llvm.lifetime.end.p0(60, %5)\l	 call llvm.lifetime.end.p0(68, %4)\l	 call llvm.lifetime.end.p0(36, %3)\l	 call llvm.lifetime.end.p0(4, %2)\l	 call llvm.lifetime.end.p0(4, %1)\l	 ret \l	}"];
+}

@@ -1,0 +1,24 @@
+digraph "CFG of Trees function"{
+	BB1[shape=record,label="{BB1:\l\l
+	 %2 = alloca  1\l	 %3 = alloca  1\l	 store  %0,  %2\l	 call llvm.lifetime.start.p0(4, %3)\l	 call tInitarr()\l	 %4 = call malloc(24)\l	 store  %4,  tree\l	 %5 = load  tree\l	 %6 = getelementptr  %5,  0,  0\l	 store  null,  %6\l	 %7 = load  tree\l	 %8 = getelementptr  %7,  0,  1\l	 store  null,  %8\l	 %9 = load  getelementptr inbounds ([5001 x i32], ptr @sortlist, i64 0, i64 1)\l	 %10 = load  tree\l	 %11 = getelementptr  %10,  0,  2\l	 store  %9,  %11\l	 store  2,  %3\l	 br BB12\l	}"];
+	BB1 -> BB12
+	BB12[shape=record,label="{BB12:\l\l
+	 %13 = load  %3\l	 %14 = icmp  %13,  5000\l	 br %14, BB24, BB15\l	}"];
+	BB12 -> BB15
+	BB12 -> BB24
+	BB15[shape=record,label="{BB15:\l\l
+	 %16 = load  %3\l	 %17 = sext  %16\l	 %18 = getelementptr  sortlist,  0,  %17\l	 %19 = load  %18\l	 %20 = load  tree\l	 call Insert(%19, %20)\l	 br BB21\l	}"];
+	BB15 -> BB21
+	BB21[shape=record,label="{BB21:\l\l
+	 %22 = load  %3\l	 %23 = add  %22,  1\l	 store  %23,  %3\l	 br BB12\l	}"];
+	BB21 -> BB12
+	BB24[shape=record,label="{BB24:\l\l
+	 %25 = load  %2\l	 %26 = add  2,  %25\l	 %27 = sext  %26\l	 %28 = getelementptr  sortlist,  0,  %27\l	 %29 = load  %28\l	 %30 = call printf(.str, %29)\l	 %31 = load  tree\l	 %32 = call Checktree(%31)\l	 %33 = icmp  %32,  0\l	 br %33, BB34, BB36\l	}"];
+	BB24 -> BB36
+	BB24 -> BB34
+	BB34[shape=record,label="{BB34:\l\l
+	 %35 = call printf(.str.1)\l	 br BB36\l	}"];
+	BB34 -> BB36
+	BB36[shape=record,label="{BB36:\l\l
+	 call llvm.lifetime.end.p0(4, %3)\l	 ret \l	}"];
+}

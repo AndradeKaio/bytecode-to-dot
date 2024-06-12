@@ -1,0 +1,4 @@
+digraph "CFG of Error function"{
+	BB1[shape=record,label="{BB1:\l\l
+	 %2 = alloca  1\l	 store  %0,  %2\l	 %3 = load  %2\l	 %4 = call printf(.str, %3)\l	 ret \l	}"];
+}

@@ -1,0 +1,34 @@
+digraph "CFG of bInitarr function"{
+	BB0[shape=record,label="{BB0:\l\l
+	 %1 = alloca  1\l	 %2 = alloca  1\l	 call llvm.lifetime.start.p0(4, %1)\l	 call llvm.lifetime.start.p0(8, %2)\l	 call Initrand()\l	 store  0,  biggest\l	 store  0,  littlest\l	 store  1,  %1\l	 br BB3\l	}"];
+	BB0 -> BB3
+	BB3[shape=record,label="{BB3:\l\l
+	 %4 = load  %1\l	 %5 = icmp  %4,  500\l	 br %5, BB47, BB6\l	}"];
+	BB3 -> BB6
+	BB3 -> BB47
+	BB6[shape=record,label="{BB6:\l\l
+	 %7 = call Rand()\l	 %8 = sext  %7\l	 store  %8,  %2\l	 %9 = load  %2\l	 %10 = load  %2\l	 %11 = sdiv  %10,  100000\l	 %12 = mul  %11,  100000\l	 %13 = sub  %9,  %12\l	 %14 = sub  %13,  50000\l	 %15 = trunc  %14\l	 %16 = load  %1\l	 %17 = sext  %16\l	 %18 = getelementptr  sortlist,  0,  %17\l	 store  %15,  %18\l	 %19 = load  %1\l	 %20 = sext  %19\l	 %21 = getelementptr  sortlist,  0,  %20\l	 %22 = load  %21\l	 %23 = load  biggest\l	 %24 = icmp  %22,  %23\l	 br %24, BB30, BB25\l	}"];
+	BB6 -> BB25
+	BB6 -> BB30
+	BB25[shape=record,label="{BB25:\l\l
+	 %26 = load  %1\l	 %27 = sext  %26\l	 %28 = getelementptr  sortlist,  0,  %27\l	 %29 = load  %28\l	 store  %29,  biggest\l	 br BB43\l	}"];
+	BB25 -> BB43
+	BB30[shape=record,label="{BB30:\l\l
+	 %31 = load  %1\l	 %32 = sext  %31\l	 %33 = getelementptr  sortlist,  0,  %32\l	 %34 = load  %33\l	 %35 = load  littlest\l	 %36 = icmp  %34,  %35\l	 br %36, BB42, BB37\l	}"];
+	BB30 -> BB37
+	BB30 -> BB42
+	BB37[shape=record,label="{BB37:\l\l
+	 %38 = load  %1\l	 %39 = sext  %38\l	 %40 = getelementptr  sortlist,  0,  %39\l	 %41 = load  %40\l	 store  %41,  littlest\l	 br BB42\l	}"];
+	BB37 -> BB42
+	BB42[shape=record,label="{BB42:\l\l
+	 br BB43\l	}"];
+	BB42 -> BB43
+	BB43[shape=record,label="{BB43:\l\l
+	 br BB44\l	}"];
+	BB43 -> BB44
+	BB44[shape=record,label="{BB44:\l\l
+	 %45 = load  %1\l	 %46 = add  %45,  1\l	 store  %46,  %1\l	 br BB3\l	}"];
+	BB44 -> BB3
+	BB47[shape=record,label="{BB47:\l\l
+	 call llvm.lifetime.end.p0(8, %2)\l	 call llvm.lifetime.end.p0(4, %1)\l	 ret \l	}"];
+}

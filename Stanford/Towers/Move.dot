@@ -1,0 +1,4 @@
+digraph "CFG of Move function"{
+	BB2[shape=record,label="{BB2:\l\l
+	 %3 = alloca  1\l	 %4 = alloca  1\l	 store  %0,  %3\l	 store  %1,  %4\l	 %5 = load  %3\l	 %6 = call Pop(%5)\l	 %7 = load  %4\l	 call Push(%6, %7)\l	 %8 = load  movesdone\l	 %9 = add  %8,  1\l	 store  %9,  movesdone\l	 ret \l	}"];
+}

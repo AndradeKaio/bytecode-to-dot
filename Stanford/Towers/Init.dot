@@ -1,0 +1,17 @@
+digraph "CFG of Init function"{
+	BB2[shape=record,label="{BB2:\l\l
+	 %3 = alloca  1\l	 %4 = alloca  1\l	 %5 = alloca  1\l	 store  %0,  %3\l	 store  %1,  %4\l	 call llvm.lifetime.start.p0(4, %5)\l	 %6 = load  %3\l	 call Makenull(%6)\l	 %7 = load  %4\l	 store  %7,  %5\l	 br BB8\l	}"];
+	BB2 -> BB8
+	BB8[shape=record,label="{BB8:\l\l
+	 %9 = load  %5\l	 %10 = icmp  %9,  1\l	 br %10, BB17, BB11\l	}"];
+	BB8 -> BB11
+	BB8 -> BB17
+	BB11[shape=record,label="{BB11:\l\l
+	 %12 = load  %5\l	 %13 = load  %3\l	 call Push(%12, %13)\l	 br BB14\l	}"];
+	BB11 -> BB14
+	BB14[shape=record,label="{BB14:\l\l
+	 %15 = load  %5\l	 %16 = add  %15,  -1\l	 store  %16,  %5\l	 br BB8\l	}"];
+	BB14 -> BB8
+	BB17[shape=record,label="{BB17:\l\l
+	 call llvm.lifetime.end.p0(4, %5)\l	 ret \l	}"];
+}

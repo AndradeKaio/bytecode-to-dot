@@ -1,0 +1,34 @@
+digraph "CFG of Cos function"{
+	BB1[shape=record,label="{BB1:\l\l
+	 %2 = alloca  1\l	 %3 = alloca  1\l	 %4 = alloca  1\l	 %5 = alloca  1\l	 %6 = alloca  1\l	 store  %0,  %2\l	 call llvm.lifetime.start.p0(4, %3)\l	 call llvm.lifetime.start.p0(4, %4)\l	 call llvm.lifetime.start.p0(4, %5)\l	 call llvm.lifetime.start.p0(4, %6)\l	 store  1.000000e+00,  %5\l	 store  1,  %4\l	 %7 = load  %2\l	 store  %7,  %6\l	 store  2,  %3\l	 br BB8\l	}"];
+	BB1 -> BB8
+	BB8[shape=record,label="{BB8:\l\l
+	 %9 = load  %3\l	 %10 = icmp  %9,  10\l	 br %10, BB44, BB11\l	}"];
+	BB8 -> BB11
+	BB8 -> BB44
+	BB11[shape=record,label="{BB11:\l\l
+	 %12 = load  %4\l	 %13 = load  %3\l	 %14 = mul  %12,  %13\l	 store  %14,  %4\l	 %15 = load  %6\l	 %16 = load  %2\l	 %17 = fmul  %15,  %16\l	 store  %17,  %6\l	 %18 = load  %3\l	 %19 = and  %18,  1\l	 %20 = icmp  %19,  0\l	 br %20, BB40, BB21\l	}"];
+	BB11 -> BB21
+	BB11 -> BB40
+	BB21[shape=record,label="{BB21:\l\l
+	 %22 = load  %3\l	 %23 = and  %22,  3\l	 %24 = icmp  %23,  0\l	 br %24, BB32, BB25\l	}"];
+	BB21 -> BB25
+	BB21 -> BB32
+	BB25[shape=record,label="{BB25:\l\l
+	 %26 = load  %5\l	 %27 = load  %6\l	 %28 = load  %4\l	 %29 = sitofp  %28\l	 %30 = fdiv  %27,  %29\l	 %31 = fadd  %26,  %30\l	 store  %31,  %5\l	 br BB39\l	}"];
+	BB25 -> BB39
+	BB32[shape=record,label="{BB32:\l\l
+	 %33 = load  %5\l	 %34 = load  %6\l	 %35 = load  %4\l	 %36 = sitofp  %35\l	 %37 = fdiv  %34,  %36\l	 %38 = fsub  %33,  %37\l	 store  %38,  %5\l	 br BB39\l	}"];
+	BB32 -> BB39
+	BB39[shape=record,label="{BB39:\l\l
+	 br BB40\l	}"];
+	BB39 -> BB40
+	BB40[shape=record,label="{BB40:\l\l
+	 br BB41\l	}"];
+	BB40 -> BB41
+	BB41[shape=record,label="{BB41:\l\l
+	 %42 = load  %3\l	 %43 = add  %42,  1\l	 store  %43,  %3\l	 br BB8\l	}"];
+	BB41 -> BB8
+	BB44[shape=record,label="{BB44:\l\l
+	 %45 = load  %5\l	 call llvm.lifetime.end.p0(4, %6)\l	 call llvm.lifetime.end.p0(4, %5)\l	 call llvm.lifetime.end.p0(4, %4)\l	 call llvm.lifetime.end.p0(4, %3)\l	 ret %45\l	}"];
+}

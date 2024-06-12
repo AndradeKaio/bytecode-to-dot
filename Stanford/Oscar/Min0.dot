@@ -1,0 +1,14 @@
+digraph "CFG of Min0 function"{
+	BB2[shape=record,label="{BB2:\l\l
+	 %3 = alloca  1\l	 %4 = alloca  1\l	 %5 = alloca  1\l	 store  %0,  %4\l	 store  %1,  %5\l	 %6 = load  %4\l	 %7 = load  %5\l	 %8 = icmp  %6,  %7\l	 br %8, BB11, BB9\l	}"];
+	BB2 -> BB9
+	BB2 -> BB11
+	BB9[shape=record,label="{BB9:\l\l
+	 %10 = load  %4\l	 store  %10,  %3\l	 br BB13\l	}"];
+	BB9 -> BB13
+	BB11[shape=record,label="{BB11:\l\l
+	 %12 = load  %5\l	 store  %12,  %3\l	 br BB13\l	}"];
+	BB11 -> BB13
+	BB13[shape=record,label="{BB13:\l\l
+	 %14 = load  %3\l	 ret %14\l	}"];
+}

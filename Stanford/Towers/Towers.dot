@@ -1,0 +1,24 @@
+digraph "CFG of Towers function"{
+	BB0[shape=record,label="{BB0:\l\l
+	 %1 = alloca  1\l	 call llvm.lifetime.start.p0(4, %1)\l	 store  1,  %1\l	 br BB2\l	}"];
+	BB0 -> BB2
+	BB2[shape=record,label="{BB2:\l\l
+	 %3 = load  %1\l	 %4 = icmp  %3,  18\l	 br %4, BB15, BB5\l	}"];
+	BB2 -> BB5
+	BB2 -> BB15
+	BB5[shape=record,label="{BB5:\l\l
+	 %6 = load  %1\l	 %7 = sub  %6,  1\l	 %8 = load  %1\l	 %9 = sext  %8\l	 %10 = getelementptr  cellspace,  0,  %9\l	 %11 = getelementptr  %10,  0,  1\l	 store  %7,  %11\l	 br BB12\l	}"];
+	BB5 -> BB12
+	BB12[shape=record,label="{BB12:\l\l
+	 %13 = load  %1\l	 %14 = add  %13,  1\l	 store  %14,  %1\l	 br BB2\l	}"];
+	BB12 -> BB2
+	BB15[shape=record,label="{BB15:\l\l
+	 store  18,  freelist\l	 call Init(1, 14)\l	 call Makenull(2)\l	 call Makenull(3)\l	 store  0,  movesdone\l	 call tower(1, 2, 14)\l	 %16 = load  movesdone\l	 %17 = icmp  %16,  16383\l	 br %17, BB20, BB18\l	}"];
+	BB15 -> BB18
+	BB15 -> BB20
+	BB18[shape=record,label="{BB18:\l\l
+	 %19 = call printf(.str.4)\l	 br BB20\l	}"];
+	BB18 -> BB20
+	BB20[shape=record,label="{BB20:\l\l
+	 %21 = load  movesdone\l	 %22 = call printf(.str.5, %21)\l	 call llvm.lifetime.end.p0(4, %1)\l	 ret \l	}"];
+}
